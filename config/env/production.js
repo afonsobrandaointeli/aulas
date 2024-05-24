@@ -269,6 +269,9 @@ module.exports = {
     // sails_sockets__url=redis://admin:myc00lpAssw2D@bigsquid.redistogo.com:9562/0
     // ```
     //--------------------------------------------------------------------------
+    beforeConnect: function(handshake, proceed) {
+      return proceed(undefined, true);
+    }
   },
 
   /**************************************************************************
