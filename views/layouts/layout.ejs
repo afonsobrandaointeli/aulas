@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <title>New Sails App</title>
+
+    <!-- Viewport mobile tag for sensible mobile support -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <%/* If you want to discourage search engines from indexing this site, uncomment the following line: */%>
+    <%/* <meta name="robots" content="noindex"> */%>
+
+    <!--STYLES-->
+    <link rel="stylesheet" href="/styles/importer.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!--STYLES END-->
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md fixed-top" style="background-color: #2e2640;">
+      <a class="navbar-brand text-white" href="/">Aulas Professor Afonso</a>
+      <div class="ml-auto">
+        <img
+          src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1716517105/Captura_de_tela_2024-05-24_021828_d3cnxi.png"
+          alt="Imagem" class="navbar-image" style="height: 40px;">
+      </div>
+    </nav>
+
+    <%- body %>
+
+    <!--TEMPLATES-->
+    <!--TEMPLATES END-->
+
+    <!--SCRIPTS-->
+    <script src="/dependencies/sails.io.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!--SCRIPTS END-->
+  </body>
+</html>
