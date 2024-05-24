@@ -233,14 +233,14 @@ module.exports = {
    *                                                                          *
    ***************************************************************************/
   sockets: {
-    beforeConnect: function(handshake, proceed) {
-      // Seu código personalizado antes da conexão do socket
-      // Por exemplo, verificar a autenticação do usuário
-      return proceed(undefined, true);
-    },
-    afterDisconnect: function(session, socket, done) {
-      // Seu código personalizado após a desconexão do socket
-      return done();
+    // beforeConnect: function(handshake, proceed) {
+    //   // Seu código personalizado antes da conexão do socket
+    //   // Por exemplo, verificar a autenticação do usuário
+    //   return proceed(undefined, true);
+    // },
+    // afterDisconnect: function(session, socket, done) {
+    //   // Seu código personalizado após a desconexão do socket
+    //   return done();
     }
     /***************************************************************************
      *                                                                          *
