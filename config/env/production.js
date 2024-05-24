@@ -233,6 +233,15 @@ module.exports = {
    *                                                                          *
    ***************************************************************************/
   sockets: {
+    beforeConnect: function(handshake, proceed) {
+      // Seu código personalizado antes da conexão do socket
+      // Por exemplo, verificar a autenticação do usuário
+      return proceed(undefined, true);
+    },
+    afterDisconnect: function(session, socket, done) {
+      // Seu código personalizado após a desconexão do socket
+      return done();
+    }
     /***************************************************************************
      *                                                                          *
      * Uncomment the `onlyAllowOrigins` whitelist below to configure which      *
@@ -242,7 +251,7 @@ module.exports = {
      * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
      *                                                                          *
      ***************************************************************************/
-    onlyAllowOrigins: ['http://*', 'https://*'],
+    // onlyAllowOrigins: ['http://*', 'https://*'],
     /***************************************************************************
      *                                                                          *
      * If you are deploying a cluster of multiple servers and/or processes,     *
