@@ -2,8 +2,106 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- JS com Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- SCRIPTS -->
+<script>
+  function copyToClipboard(text) {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    alert('Texto copiado para a área de transferência');
+  }
+</script>
 
+<!-- CODE -->
 <h1 class="container" style="margin-top: 80px;">Módulo 2/Frontend 3</h1>
+<section class="vh-100 d-flex justify-content-center align-items-center">
+  <h1 class="display-1 text-center">StandUp Daily (15min)</h1>
+</section>
+
+<section class="container mt-5">
+  <h1 class="text-center">Revisitando os Autoestudos</h1>
+  <div class="table-responsive mt-4">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Atividades</th>
+          <th scope="col">Unidade</th>
+          <th scope="col">Pontos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CSS parte 1</td>
+          <td>Semana 07</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>CSS parte 2</td>
+          <td>Semana 07</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>CSS parte 3</td>
+          <td>Semana 07</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>CSS parte 4 (opcional)</td>
+          <td>Semana 07</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Como pensar para implementar CSS</td>
+          <td>Semana 07</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>CSS na prática (opcional)</td>
+          <td>Semana 07</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Responsividade</td>
+          <td>Semana 07</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>JQuery e classes de CSS</td>
+          <td>Semana 07</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>JQuery e dimensões de CSS</td>
+          <td>Semana 07</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>JQuery e propriedades de CSS</td>
+          <td>Semana 07</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Ferramenta para responsividade e padrões de CSS: Bootstrap</td>
+          <td>Semana 07</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Sails, Views e CSS</td>
+          <td>Semana 07</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="vh-100 d-flex justify-content-center align-items-center">
+  <h1 class="display-1 text-center"><a href="kahoot.com">Kahoot</a></h1>
+</section>
+
 <section class="container mt-3">
   <div class="container mt-3">
     <div class="container mt-5">
@@ -74,4 +172,205 @@
     </div>
   </div>
 </section>
+
+<section class="container mt-3">
+  <div class="container mt-3">
+    <div class="container mt-5">
+      <h1 class="text-center">Uso do Bootstrap com CSS</h1>
+      <div class="row">
+        <div class="col-12 col-md-6 mb-4 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <h5 class="card-title">O que é Bootstrap?</h5>
+              <p class="card-text">Bootstrap é um framework front-end que facilita a criação de sites responsivos e móveis. Ele oferece uma coleção de estilos CSS e componentes JavaScript prontos para uso, como navegação, botões e formulários.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <h5 class="card-title">Integração com CSS</h5>
+              <p class="card-text">Bootstrap pode ser facilmente integrado com CSS personalizado. Isso permite que os desenvolvedores aproveitem a estrutura e os componentes do Bootstrap enquanto adicionam estilos únicos para atender às necessidades específicas do projeto.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <h5 class="card-title">Classes Utilitárias</h5>
+              <p class="card-text">O Bootstrap oferece muitas classes utilitárias que facilitam a aplicação rápida de estilos comuns, como margens, preenchimentos e cores de fundo. Essas classes podem ser combinadas com CSS personalizado para criar layouts flexíveis e consistentes.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <h5 class="card-title">Layouts Responsivos</h5>
+              <p class="card-text">Com o sistema de grid do Bootstrap, criar layouts responsivos se torna simples e eficiente. O grid utiliza classes CSS para definir como os elementos são organizados em diferentes tamanhos de tela, garantindo uma experiência consistente em dispositivos móveis e desktops.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <h5 class="card-title">Componentes Personalizáveis</h5>
+              <p class="card-text">Bootstrap inclui uma variedade de componentes personalizáveis, como modais, carrosséis e abas. Esses componentes podem ser estilizados com CSS para se alinhar à identidade visual do seu projeto.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <h5 class="card-title">Flexbox e Grid Layout</h5>
+              <p class="card-text">O Bootstrap utiliza Flexbox para facilitar a criação de layouts flexíveis. Além disso, a versão mais recente do Bootstrap também oferece suporte ao Grid Layout do CSS, proporcionando ainda mais controle sobre a organização de elementos na página.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container mt-3">
+  <div class="container mt-3">
+    <div class="container mt-5">
+      <h1 class="text-center">Documentação do Bootstrap</h1>
+      <div class="row">
+        <div class="col-12 col-md-8 offset-md-2 mb-4 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <h5 class="card-title">Guia Completo do Bootstrap</h5>
+              <p class="card-text">Para obter mais informações sobre como utilizar o Bootstrap, acesse a documentação oficial. Lá você encontrará guias detalhados, exemplos e uma referência completa de todos os componentes e classes disponíveis no framework.</p>
+              <a href="https://getbootstrap.com/docs/5.0/getting-started/introduction/" class="btn btn-secondary" target="_blank">Acesse a Documentação</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container mt-3">
+  <div class="container mt-3">
+    <div class="container mt-5">
+      <h1 class="text-center">Passo a Passo para Estilizar um EJS no Sails</h1>
+      <div class="row">
+        <div class="col-12 mb-4 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <h5 class="card-title">1. Crie um Arquivo EJS</h5>
+              <p class="card-text">Dentro do diretório <code>views</code> do seu projeto Sails, crie um arquivo EJS. Por exemplo, <code>example.ejs</code>.</p>
+              <div style="background-color: #f8f9fa; padding: 10px; border-radius: 5px;">
+                <pre><code>views/example.ejs</code></pre>
+                <button class="btn btn-secondary btn-sm" onclick="copyToClipboard('views/example.ejs')">Copiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-4 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <h5 class="card-title">2. Adicione o Bootstrap ao Projeto</h5>
+              <p class="card-text">Inclua o Bootstrap no seu projeto adicionando o link do CSS e o script do JavaScript no seu arquivo <code>layout.ejs</code> (ou diretamente no arquivo EJS que você criou).</p>
+              <div style="background-color: #f8f9fa; padding: 10px; border-radius: 5px;">
+                <pre><code>&lt;!-- Adicione isso dentro da tag head --&gt;
+&lt;link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet"&gt;
+
+&lt;!-- Adicione isso antes da tag de fechamento body --&gt;
+&lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code></pre>
+                <button class="btn btn-secondary btn-sm" onclick="copyToClipboard('<!-- Adicione isso dentro da tag head -->
+<link href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;>
+
+<!-- Adicione isso antes da tag de fechamento body -->
+<script src=&quot;https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js&quot;></script>')">Copiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-4 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <h5 class="card-title">3. Estruture o Arquivo EJS com o Bootstrap</h5>
+              <p class="card-text">Utilize as classes do Bootstrap para estruturar seu arquivo EJS. Aqui está um exemplo simples:</p>
+              <div style="background-color: #f8f9fa; padding: 10px; border-radius: 5px;">
+                <pre><code>&lt;div class="container mt-5"&gt;
+  &lt;h1 class="text-center"&gt;Meu Projeto Sails com Bootstrap&lt;/h1&gt;
+  &lt;div class="row mt-4"&gt;
+    &lt;div class="col-md-6"&gt;
+      &lt;div class="card"&gt;
+        &lt;div class="card-body"&gt;
+          &lt;h5 class="card-title"&gt;Título do Card&lt;/h5&gt;
+          &lt;p class="card-text"&gt;Conteúdo do card.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-6"&gt;
+      &lt;div class="card"&gt;
+        &lt;div class="card-body"&gt;
+          &lt;h5 class="card-title"&gt;Outro Título&lt;/h5&gt;
+          &lt;p class="card-text"&gt;Mais conteúdo aqui.&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <button class="btn btn-secondary btn-sm" onclick="copyToClipboard('<div class=&quot;container mt-5&quot;>\n  <h1 class=&quot;text-center&quot;>Meu Projeto Sails com Bootstrap</h1>\n  <div class=&quot;row mt-4&quot;>\n    <div class=&quot;col-md-6&quot;>\n      <div class=&quot;card&quot;>\n        <div class=&quot;card-body&quot;>\n          <h5 class=&quot;card-title&quot;>Título do Card</h5>\n          <p class=&quot;card-text&quot;>Conteúdo do card.</p>\n        </div>\n      </div>\n    </div>\n    <div class=&quot;col-md-6&quot;>\n      <div class=&quot;card&quot;>\n        <div class=&quot;card-body&quot;>\n          <h5 class=&quot;card-title&quot;>Outro Título</h5>\n          <p class=&quot;card-text&quot;>Mais conteúdo aqui.</p>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>')">Copiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-4 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <h5 class="card-title">4. Personalize com CSS</h5>
+              <p class="card-text">Para adicionar estilos personalizados, crie um arquivo CSS no diretório <code>assets/styles</code> do seu projeto Sails. Por exemplo, <code>styles.css</code>. Inclua este arquivo no seu arquivo EJS:</p>
+              <div style="background-color: #f8f9fa; padding: 10px; border-radius: 5px;">
+                <pre><code>&lt;link rel="stylesheet" href="/styles/styles.css"&gt;</code></pre>
+                <button class="btn btn-secondary btn-sm" onclick="copyToClipboard('<link rel=&quot;stylesheet&quot; href=&quot;/styles/styles.css&quot;>')">Copiar</button>
+              </div>
+              <p class="card-text">Agora, adicione seus estilos personalizados ao <code>styles.css</code>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 mb-4 d-flex">
+          <div class="card flex-fill">
+            <div class="card-body">
+              <h5 class="card-title">5. Verifique no Navegador</h5>
+              <p class="card-text">Inicie seu servidor Sails e acesse o arquivo EJS no navegador para ver as mudanças de estilo aplicadas.</p>
+              <div style="background-color: #f8f9fa; padding: 10px; border-radius: 5px;">
+                <pre><code>sails lift</code></pre>
+                <button class="btn btn-secondary btn-sm" onclick="copyToClipboard('sails lift')">Copiar</button>
+              </div>
+              <p class="card-text">Abra o navegador e vá para <code>http://localhost:1337/example</code> (ou a rota configurada para o seu EJS).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container mt-3">
+  <h1 class="text-center">Vídeo de CSS com Sails</h1> 
+  <div class="containe d-flex justify-content-center">
+    <iframe width="700" height="400" src="https://www.youtube.com/embed/-_7-H5-FDBU?si=BJSVDu3CDOWcnXSm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+</section>
+
+<section class="container m-5 mb-5">
+  <div class="container mt-3">
+    <div class="container mt-5">
+      <h1 class="text-center">Desafio para os Grupos</h1>
+      <p class="lead text-center">Cada grupo deve apresentar a sua estrutura de estilização do artefato. Seguem os pontos que devem ser abordados:</p>
+      <ul class="list-group">
+        <li class="list-group-item">1. Estrutura de Estilização do Artefato</li>
+        <li class="list-group-item">2. Rotas das Views</li>
+        <li class="list-group-item">3. Frameworks e Tecnologias Utilizadas (Bootstrap, Tailwind, CSS Puro, etc.)</li>
+        <li class="list-group-item">4. Estrutura de Pastas</li>
+        <li class="list-group-item">5. Arquivos CSS ou LESS</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 
