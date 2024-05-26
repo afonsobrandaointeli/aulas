@@ -15,6 +15,19 @@
   }
 </script>
 
+<!-- STYLES   -->
+<style>
+  .list-group-item a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+  }
+  .list-group-item a i {
+      margin-right: 10px;
+  }
+</style>
+
 <!-- CODE -->
 <h1 class="container" style="margin-top: 80px;">Módulo 2/Frontend 3</h1>
 <section class="vh-100 d-flex justify-content-center align-items-center">
@@ -23,83 +36,79 @@
 
 <section class="container mt-5">
   <h1 class="text-center">Revisitando os Autoestudos</h1>
-  <div class="table-responsive mt-4">
-    <table class="table table-bordered table-striped">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Atividades</th>
-          <th scope="col">Unidade</th>
-          <th scope="col">Pontos</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>CSS parte 1</td>
-          <td>Semana 07</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>CSS parte 2</td>
-          <td>Semana 07</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>CSS parte 3</td>
-          <td>Semana 07</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>CSS parte 4 (opcional)</td>
-          <td>Semana 07</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>Como pensar para implementar CSS</td>
-          <td>Semana 07</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>CSS na prática (opcional)</td>
-          <td>Semana 07</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>Responsividade</td>
-          <td>Semana 07</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>JQuery e classes de CSS</td>
-          <td>Semana 07</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>JQuery e dimensões de CSS</td>
-          <td>Semana 07</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>JQuery e propriedades de CSS</td>
-          <td>Semana 07</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>Ferramenta para responsividade e padrões de CSS: Bootstrap</td>
-          <td>Semana 07</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td>Sails, Views e CSS</td>
-          <td>Semana 07</td>
-          <td>0</td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="accordion mt-4" id="activitiesAccordion">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Atividades Semana 07
+            </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#activitiesAccordion">
+            <div class="accordion-body">
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="https://developer.mozilla.org/pt-BR/docs/Learn/CSS/First_steps/What_is_CSS" target="_blank"> CSS parte 1</a></li>
+                    <li class="list-group-item"><a href="https://developer.mozilla.org/pt-BR/docs/Learn/CSS/First_steps/Getting_started" target="_blank"> CSS parte 2</a></li>
+                    <li class="list-group-item"><a href="https://developer.mozilla.org/pt-BR/docs/Learn/CSS/First_steps/How_CSS_is_structured" target="_blank"> CSS parte 3</a></li>
+                    <li class="list-group-item"><a href="https://developer.mozilla.org/pt-BR/docs/Learn/CSS/First_steps/How_CSS_works" target="_blank"></i> CSS parte 4 (opcional)</a></li>
+                    <li class="list-group-item"><a href="https://youtu.be/q_ppL_sU6qU?feature=shared" target="_blank">Como pensar para implementar CSS</a></li>
+                    <li class="list-group-item"><a href="https://www.youtube.com/live/XyTYr07OM7c?feature=shared" target="_blank">CSS na prática (opcional)</a></li>
+                    <li class="list-group-item"><a href="https://developer.mozilla.org/pt-BR/docs/Learn/CSS/CSS_layout/Responsive_Design" target="_blank">Responsividade</a></li>
+                    <li class="list-group-item"><a href="https://www.tutorialspoint.com/jquery/jquery-css.htm" target="_blank">JQuery e classes de CSS</a></li>
+                    <li class="list-group-item"><a href="https://www.tutorialspoint.com/jquery/jquery-dimensions.htm" target="_blank">JQuery e dimensões de CSS</a></li>
+                    <li class="list-group-item"><a href="https://www.tutorialspoint.com/jquery/jquery-css-properties.htm" target="_blank">JQuery e propriedades de CSS</a></li>
+                    <li class="list-group-item"><a href="https://getbootstrap.com/docs/4.0/layout/grid/" target="_blank">Ferramenta para responsividade e padrões de CSS: Bootstrap</a></li>
+                    <li class="list-group-item"><a href="https://www.youtube.com/live/-_7-H5-FDBU?si=yYQoN0IH_cLda1IH" target="_blank">Sails, Views e CSS</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div id="carouselExampleControls" class="carousel slide m-5" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1716686799/Slide1_uf1xjd.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1716686950/Slide2_yysynn.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1716686977/Slide3_yag4we.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1716687001/Slide4_m1je5n.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1716687021/Slide5_bzsh8r.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1716687037/Slide6_ql0x9n.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1716687062/Slide7_sm7bvg.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1716687086/Slide8_wmhpru.png" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1716687090/Slide9_yqulwt.png" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
 </section>
 
 <section class="vh-100 d-flex justify-content-center align-items-center">
-  <h1 class="display-1 text-center"><a href="kahoot.com">Kahoot</a></h1>
+  <h1 class="display-1 text-center"><a href="http://www.kahoot.com" target="_blank">Kahoot</a></h1>
 </section>
 
 <section class="container mt-3">
@@ -274,15 +283,15 @@
               <p class="card-text">Inclua o Bootstrap no seu projeto adicionando o link do CSS e o script do JavaScript no seu arquivo <code>layout.ejs</code> (ou diretamente no arquivo EJS que você criou).</p>
               <div style="background-color: #f8f9fa; padding: 10px; border-radius: 5px;">
                 <pre><code>&lt;!-- Adicione isso dentro da tag head --&gt;
-&lt;link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet"&gt;
+                &lt;link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css" rel="stylesheet"&gt;
 
-&lt;!-- Adicione isso antes da tag de fechamento body --&gt;
-&lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code></pre>
-                <button class="btn btn-secondary btn-sm" onclick="copyToClipboard('<!-- Adicione isso dentro da tag head -->
-<link href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;>
+                &lt;!-- Adicione isso antes da tag de fechamento body --&gt;
+                &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</code></pre>
+                                <button class="btn btn-secondary btn-sm" onclick="copyToClipboard('<!-- Adicione isso dentro da tag head -->
+                <link href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;>
 
-<!-- Adicione isso antes da tag de fechamento body -->
-<script src=&quot;https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js&quot;></script>')">Copiar</button>
+                <!-- Adicione isso antes da tag de fechamento body -->
+                <script src=&quot;https://stackpath.bootstrapcdn.com/bootstrap/5.0.0/js/bootstrap.bundle.min.js&quot;></script>')">Copiar</button>
               </div>
             </div>
           </div>
@@ -294,26 +303,26 @@
               <p class="card-text">Utilize as classes do Bootstrap para estruturar seu arquivo EJS. Aqui está um exemplo simples:</p>
               <div style="background-color: #f8f9fa; padding: 10px; border-radius: 5px;">
                 <pre><code>&lt;div class="container mt-5"&gt;
-  &lt;h1 class="text-center"&gt;Meu Projeto Sails com Bootstrap&lt;/h1&gt;
-  &lt;div class="row mt-4"&gt;
-    &lt;div class="col-md-6"&gt;
-      &lt;div class="card"&gt;
-        &lt;div class="card-body"&gt;
-          &lt;h5 class="card-title"&gt;Título do Card&lt;/h5&gt;
-          &lt;p class="card-text"&gt;Conteúdo do card.&lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class="col-md-6"&gt;
-      &lt;div class="card"&gt;
-        &lt;div class="card-body"&gt;
-          &lt;h5 class="card-title"&gt;Outro Título&lt;/h5&gt;
-          &lt;p class="card-text"&gt;Mais conteúdo aqui.&lt;/p&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+                    &lt;h1 class="text-center"&gt;Meu Projeto Sails com Bootstrap&lt;/h1&gt;
+                    &lt;div class="row mt-4"&gt;
+                      &lt;div class="col-md-6"&gt;
+                        &lt;div class="card"&gt;
+                          &lt;div class="card-body"&gt;
+                            &lt;h5 class="card-title"&gt;Título do Card&lt;/h5&gt;
+                            &lt;p class="card-text"&gt;Conteúdo do card.&lt;/p&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                      &lt;div class="col-md-6"&gt;
+                        &lt;div class="card"&gt;
+                          &lt;div class="card-body"&gt;
+                            &lt;h5 class="card-title"&gt;Outro Título&lt;/h5&gt;
+                            &lt;p class="card-text"&gt;Mais conteúdo aqui.&lt;/p&gt;
+                          &lt;/div&gt;
+                        &lt;/div&gt;
+                      &lt;/div&gt;
+                    &lt;/div&gt;
+                  &lt;/div&gt;</code></pre>
                 <button class="btn btn-secondary btn-sm" onclick="copyToClipboard('<div class=&quot;container mt-5&quot;>\n  <h1 class=&quot;text-center&quot;>Meu Projeto Sails com Bootstrap</h1>\n  <div class=&quot;row mt-4&quot;>\n    <div class=&quot;col-md-6&quot;>\n      <div class=&quot;card&quot;>\n        <div class=&quot;card-body&quot;>\n          <h5 class=&quot;card-title&quot;>Título do Card</h5>\n          <p class=&quot;card-text&quot;>Conteúdo do card.</p>\n        </div>\n      </div>\n    </div>\n    <div class=&quot;col-md-6&quot;>\n      <div class=&quot;card&quot;>\n        <div class=&quot;card-body&quot;>\n          <h5 class=&quot;card-title&quot;>Outro Título</h5>\n          <p class=&quot;card-text&quot;>Mais conteúdo aqui.</p>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>')">Copiar</button>
               </div>
             </div>
