@@ -3,6 +3,10 @@ module.exports.routes = {
 
   // IN
   "/mod2/frontend3": { view: "pages/mod2/frontend3" },
+  "/mod2/test1": { view: "pages/mod2/test1" },
+  "/mod2/test2": { view: "pages/mod2/test2" },
+  "/mod2/deploy": { view: "pages/mod2/deploy" },
+  "/mod2/network": { view: "pages/mod2/network" },
 
   // ES
   "/mod10es/cicd": { view: "pages/mod10es/cicd" },

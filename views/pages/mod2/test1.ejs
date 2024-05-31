@@ -1,0 +1,656 @@
+<!-- CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- JS com Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<style>
+  #qrcode-container {
+    position: fixed;
+    /* Fixa o elemento na tela */
+    top: 20px;
+    /* Distância do topo */
+    right: 20px;
+    /* Distância da direita */
+    z-index: 1000;
+    /* Garante que o QR Code fique por cima de outros elementos */
+    width: 150px;
+    /* Largura do QR Code */
+    height: 150px;
+    /* Altura do QR Code */
+  }
+
+  #qrcode-container img {
+    width: 100%;
+    /* Faz a imagem ocupar toda a largura do container */
+    height: auto;
+    /* Ajusta a altura automaticamente para manter a proporção */
+  }
+
+  /* Responsividade para telas menores */
+  @media (max-width: 768px) {
+    #qrcode-container {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  /* Estilos personalizados */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: #007bff; /* Cor azul primária do Bootstrap */
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+  z-index: -1; /* Coloca a linha atrás dos itens da timeline */
+}
+
+.timeline-item {
+  padding: 20px 40px;
+  background-color: #f8f9fa; /* Cor de fundo clara do Bootstrap */
+  position: relative;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -12px;
+  background-color: white;
+  border: 4px solid #007bff;
+  top: 16px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item h3 {
+  margin-top: 0;
+  color: #007bff;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .timeline::after {
+    left: 31px; /* Alinha a linha com o ícone em telas menores */
+  }
+
+  .timeline-item::after {
+    left: -16px;
+  }
+}
+/* Estilos personalizados */
+.feature-box {
+  text-align: center;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil */
+  transition: transform 0.3s ease; /* Efeito de hover */
+}
+
+.feature-box:hover {
+  transform: translateY(-5px); /* Eleva a caixa ao passar o mouse */
+}
+
+.feature-box i {
+  font-size: 36px;
+  color: #007bff; /* Cor azul primária do Bootstrap */
+  margin-bottom: 20px;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .feature-box {
+    margin-bottom: 20px; /* Espaçamento entre as caixas em telas menores */
+  }
+}
+</style>
+
+<div id="qrcode-container" class="mt-5">
+  <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1717183501/Captura_de_tela_2024-05-31_192518_efwxbc.png"
+    alt="QR Code">
+</div>
+
+<section class="container py-5 mt-5" id="roadmap">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <h1 class="display-4 mb-4">Roadmap das Aulas</h1>
+
+      <p class="lead text-center">
+        Confira o cronograma das aulas e os tópicos que serão abordados:
+      </p>
+
+      <div class="text-center">
+        <img
+          src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1717182952/Captura_de_tela_2024-05-31_191618_nlzzjk.png"
+          alt="Roadmap das Aulas" class="img-fluid rounded shadow">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="container" style="margin-top: 80px;">
+  <div>
+    <h1 class="mb-4">Testes e automação I - Testes Unitários</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Curso</th>
+          <th>Semana</th>
+          <th>Pontuação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <a href="https://integrada.minhabiblioteca.com.br/reader/books/9786558040118/"
+              target="_blank" class="btn btn-link text-decoration-none text-dark fw-bold">
+              <i class="fa-solid fa-ranking-star"></i> Qualidade de Software
+            </a>
+          </td>
+          <td>Semana 08</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://integrada.minhabiblioteca.com.br/reader/books/9786558040118/" target="_blank"
+              class="btn btn-link text-decoration-none text-dark fw-bold">
+              <i class="fa-solid fa-microscope"></i> Revisões de teste de software
+            </a>
+          </td>
+          <td>Semana 08</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://integrada.minhabiblioteca.com.br/reader/books/9786558040118/" target="_blank"
+              class="btn btn-link text-decoration-none text-dark fw-bold">
+              <i class="fa-solid fa-ruler"></i> Planejamento de testes
+              Livre
+            </a>
+          </td>
+          <td>Semana 08</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://blog.devgenius.io/the-three-as-of-unit-testing-3b8b4bf0d087" target="_blank"
+              class="btn btn-link text-decoration-none text-dark fw-bold">
+              <i class="fa-solid fa-a"></i> Testes 3A
+            </a>
+          </td>
+          <td>Semana 08</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://www.devmedia.com.br/teste-unitario-com-jest/41234"
+              target="_blank" class="btn btn-link text-decoration-none text-dark fw-bold">
+              <i class="fa-solid fa-vials"></i> Teste unitário com Jest
+            </a>
+          </td>
+          <td>Semana 08</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://youtu.be/i4aYlf292aE?feature=shared" target="_blank"
+              class="btn btn-link text-decoration-none text-dark fw-bold">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Atividade ponderada 5 - Teste Unitário
+            </a>
+          </td>
+          <td>Semana 08</td>
+          <td>2</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container py-5">
+  <h2 class="text-center mb-4">História da Qualidade de Software</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <h3>Década de 1950 - Início da Era da Qualidade</h3>
+      <p>Com a crescente complexidade do software, surgem as primeiras preocupações com a qualidade. O foco inicial era
+        na inspeção e testes manuais, buscando garantir que o software funcionasse conforme o esperado.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>Década de 1960 - Gerenciamento da Qualidade Total (TQM)</h3>
+      <p>O TQM, originado na indústria, começa a ser aplicado ao desenvolvimento de software, buscando a melhoria
+        contínua e o envolvimento de todos os membros da equipe para garantir a qualidade em todas as etapas do
+        processo.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>Década de 1970 - Métricas e Modelos de Qualidade</h3>
+      <p>Modelos como o CMM (Capability Maturity Model) surgem para avaliar a maturidade dos processos de
+        desenvolvimento e identificar áreas de melhoria, buscando padronizar e aprimorar as práticas de desenvolvimento.
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>Década de 1980 - Automação de Testes e Ferramentas de Qualidade</h3>
+      <p>A automação de testes ganha força, agilizando o processo e permitindo a execução de testes mais completos.
+        Ferramentas de análise estática e dinâmica também surgem, auxiliando na identificação de problemas no código e
+        no desempenho do software.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>Década de 1990 - ISO 9000 e Melhoria Contínua</h3>
+      <p>A norma ISO 9000 se torna referência para sistemas de gestão da qualidade, e o conceito de melhoria contínua se
+        consolida, incentivando as empresas a buscarem constantemente aprimorar seus processos e produtos.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>Década de 2000 - Métodos Ágeis e DevOps</h3>
+      <p>Métodos ágeis como Scrum e XP ganham popularidade, promovendo a colaboração, entregas frequentes e feedback
+        rápido dos usuários, o que contribui para a identificação e correção de problemas de forma mais ágil. O DevOps
+        surge para integrar desenvolvimento, operações e qualidade, buscando otimizar todo o ciclo de vida do software.
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>Década de 2010 em diante - Qualidade como Cultura</h3>
+      <p>A qualidade se torna parte da cultura das empresas, com foco em testes contínuos, integração contínua, entrega
+        contínua (CI/CD) e feedback rápido dos usuários. A qualidade não é mais responsabilidade apenas de um
+        departamento, mas de todos os envolvidos no desenvolvimento do software.</p>
+      <p>Hoje, a qualidade de software é fundamental para o sucesso de qualquer produto digital. Softwares de alta
+        qualidade são mais confiáveis, seguros, eficientes e oferecem uma melhor experiência para o usuário. Isso se
+        traduz em maior satisfação do cliente, fidelização, aumento de receita e vantagem competitiva no mercado.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="container py-5">
+  <h2 class="text-center mb-4">Normas ISO para Gerenciamento de Software</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <h3>ISO/IEC 9126 (1991-2001)</h3>
+      <p>Esta norma estabeleceu um modelo de qualidade de software com seis características principais: funcionalidade,
+        confiabilidade, usabilidade, eficiência, manutenibilidade e portabilidade. Ela serviu como base para outras
+        normas e modelos de qualidade.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>ISO/IEC 12207 (1995-2008)</h3>
+      <p>Esta norma define um conjunto de processos para o ciclo de vida de software, abrangendo desde a concepção até a
+        manutenção. Ela fornece uma estrutura para organizar e gerenciar o desenvolvimento de software de forma
+        sistemática.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>ISO/IEC 14598 (1998-2000)</h3>
+      <p>Esta norma trata da avaliação de produtos de software, fornecendo diretrizes para a avaliação da qualidade,
+        incluindo a definição de critérios de avaliação, métodos de avaliação e relatórios de avaliação.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>ISO/IEC 15504 (1998-2006)</h3>
+      <p>Também conhecido como SPICE (Software Process Improvement and Capability Determination), este modelo fornece um
+        framework para avaliação e melhoria de processos de software, permitindo que as organizações identifiquem seus
+        pontos fortes e fracos e direcionem seus esforços de melhoria.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>ISO/IEC 25000 (2005-presente)</h3>
+      <p>Conhecida como SQuaRE (System and Software Quality Requirements and Evaluation), esta família de normas abrange
+        diversos aspectos da qualidade de software, incluindo requisitos de qualidade, métricas de qualidade, avaliação
+        de produtos de software e avaliação de processos de software. É a sucessora da ISO/IEC 9126.</p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>ISO/IEC 33000 (2015-presente)</h3>
+      <p>Esta série de normas fornece diretrizes para a gestão de processos de ciclo de vida de software em projetos e
+        organizações, com foco na melhoria da qualidade e na redução de riscos.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="container py-5">
+  <h2 class="text-center mb-4">Testes Unitários: A Base da Qualidade de Software</h2>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-check-circle-fill"></i> O que são?</h5>
+          <p class="card-text">Testes unitários são componentes essenciais no desenvolvimento de software, que verificam
+            o funcionamento correto de cada unidade individual do código, como funções ou métodos. Eles garantem que
+            cada parte do software funcione como esperado, isoladamente, antes de ser integrada com outras partes.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-gear-fill"></i> Como criar?</h5>
+          <ol class="card-text">
+            <li><strong>Isolar:</strong> Escolha a unidade de código (função, método, classe) que você deseja testar.
+            </li>
+            <li><strong>Preparar:</strong> Crie dados de entrada (mocks, stubs) e defina o resultado esperado da
+              execução da unidade.</li>
+            <li><strong>Executar:</strong> Execute o teste unitário, que chamará a unidade de código com os dados de
+              entrada preparados.</li>
+            <li><strong>Verificar:</strong> Compare o resultado real da execução com o resultado esperado. Se forem
+              iguais, o teste passa; caso contrário, o teste falha, indicando um problema na unidade de código.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-shield-check"></i> Por que usar?</h5>
+          <ul class="card-text">
+            <li>Detecção precoce de erros: Encontra problemas logo no início do desenvolvimento, quando são mais fáceis
+              e baratos de corrigir.</li>
+            <li>Melhora da qualidade do código: Incentiva a criação de código modular, coeso e fácil de testar.</li>
+            <li>Documentação do código: Os testes unitários servem como exemplos de como usar o código, facilitando a
+              compreensão e manutenção.</li>
+            <li>Refatoração segura: Permite alterar o código com confiança, pois os testes garantem que a funcionalidade
+              não seja quebrada.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-file-earmark-code-fill"></i> Procedimento dos Testes Unitários</h5>
+          <p class="card-text">Os testes unitários são executados em um ambiente isolado, onde cada unidade de código é
+            testada individualmente. O processo envolve:</p>
+          <ol class="card-text">
+            <li>**Isolamento da unidade:** A função, método ou classe a ser testada é separada do restante do código.</li>
+            <li>**Criação de casos de teste:** São definidos cenários de entrada (dados) e os resultados esperados para
+              cada cenário.</li>
+            <li>**Execução dos testes:** Os testes são executados automaticamente, comparando os resultados reais com os
+              esperados.</li>
+            <li>**Análise dos resultados:** Se os resultados reais não corresponderem aos esperados, o teste falha,
+              indicando um possível erro na unidade de código.</li>
+            <li>**Correção e reexecução:** O desenvolvedor corrige o erro e reexecuta os testes para garantir que o
+              problema foi resolvido.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><i class="bi bi-people-fill"></i> Importância para o Trabalho em Equipe</h5>
+          <p class="card-text">Testes unitários são cruciais para o trabalho em equipe, pois:</p>
+          <ul class="card-text">
+            <li>**Evitam quebras de código:** Ao adicionar novas funcionalidades, os testes unitários garantem que o
+              código existente continue funcionando corretamente, evitando que as alterações afetem outras partes do
+              sistema.</li>
+            <li>**Facilitam a colaboração:** Os testes unitários permitem que diferentes desenvolvedores trabalhem em
+              partes distintas do código com confiança, sabendo que seus trabalhos não irão interferir negativamente uns
+              nos outros.</li>
+            <li>**Agilizam a identificação de erros:** Quando um teste falha, o erro é identificado rapidamente,
+              permitindo que seja corrigido antes que se propague para outras partes do sistema.</li>
+            <li>**Melhoram a qualidade do código:** A prática de escrever testes unitários incentiva a criação de código
+              mais modular, coeso e fácil de manter, resultando em um software mais robusto e confiável.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5">
+  <h2 class="text-center mb-4 display-6">Elevando a Qualidade do Seu Código JavaScript</h2>
+  <p class="text-center lead mb-5">Conheça as ferramentas que garantem a confiabilidade e robustez do seu software.</p>
+  <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <h3 class="card-title text-center"><i class="bi bi-cup-hot-fill display-4 text-primary"></i> Mocha</h3>
+          <p class="card-text flex-grow-1">Flexível e extensível, roda em Node.js e no navegador. Ideal para quem busca
+            personalização e controle total sobre o ambiente de testes.</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Execução assíncrona</li>
+            <li class="list-group-item">Relatórios flexíveis</li>
+            <li class="list-group-item">Mapeamento de exceções</li>
+            <li class="list-group-item">Grande ecossistema de plugins</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body d-flex flex-column">
+          <h3 class="card-title text-center"><i class="bi bi-lightning-fill display-4 text-warning"></i> Jest</h3>
+          <p class="card-text flex-grow-1">Completo e fácil de usar, criado pelo Facebook. Perfeito para projetos React e
+            para quem busca uma solução rápida e eficiente.</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Execução em paralelo</li>
+            <li class="list-group-item">Asserções, mocks e spies integrados</li>
+            <li class="list-group-item">Cobertura de código</li>
+            <li class="list-group-item">Snapshots para testes de UI</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-5 text-center">
+    <h3 class="mb-3">Qual escolher?</h3>
+    <p>
+      A escolha ideal depende das suas necessidades. Se busca flexibilidade e personalização, o Mocha é uma excelente
+      opção. Se prefere facilidade de uso e recursos integrados, o Jest é a escolha certa.
+    </p>
+  </div>
+</section>
+
+<section class="container py-5">
+  <h2 class="text-center mb-4 display-6">Testes Unitários com Mocha no Sails.js: Um Guia Prático</h2>
+  <p class="text-center lead mb-5">Crie testes robustos para sua aplicação Sails.js e garanta a qualidade do seu código.
+  </p>
+
+  <div class="card bg-light shadow-sm">
+    <div class="card-body">
+      <h3 class="card-title"><i class="bi bi-box-seam-fill"></i> Materiais Necessários</h3>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Mocha: Framework de testes para JavaScript.</li>
+        <li class="list-group-item">Sinon: Biblioteca para criar mocks e stubs.</li>
+        <li class="list-group-item">Supertest: Biblioteca para testes de integração HTTP.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card mt-4 bg-light shadow-sm">
+    <div class="card-body">
+      <h3 class="card-title"><i class="bi bi-list-ol"></i> Passos</h3>
+      <ol class="list-group list-group-numbered">
+        <li class="list-group-item">
+          <strong>Instalando as Ferramentas:</strong>
+          <pre><code>npm install mocha sinon supertest --save-dev</code></pre>
+        </li>
+        <li class="list-group-item">
+          <strong>Organizando os Testes:</strong>
+          <ul>
+            <li>Crie a pasta <code>test</code> na raiz do seu projeto Sails.js.</li>
+            <li>Dentro de <code>test</code>, crie uma subpasta chamada <code>unit</code> para os testes unitários.</li>
+          </ul>
+        </li>
+        <li class="list-group-item">
+          <strong>Configurando o Ambiente de Testes (<code>lifecycle.test.js</code>):</strong>
+          <pre><code>// test/lifecycle.test.js
+var sails = require('sails');
+
+before(function(done) {
+    this.timeout(5000);
+
+    sails.lift({
+        hooks: { grunt: false, csrf: false },
+        log: { level: 'warn' }
+    }, function(err) {
+        if (err) return done(err);
+        return done();
+    });
+});
+
+after(function(done) {
+    sails.lower(done);
+});
+</code></pre>
+        </li>
+        <li class="list-group-item">
+          <strong>Criando Testes de Controller e Integração:</strong>
+          <div class="accordion" id="testExamplesAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                  aria-expanded="true" aria-controls="collapseOne">
+                  Exemplo de Teste de Controller (UserController.test.js)
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                data-bs-parent="#testExamplesAccordion">
+                <div class="accordion-body">
+                  <pre><code>// test/unit/UserController.test.js
+const assert = require('assert');
+const controller = require('../../api/controllers/UserController');
+const { mockAsync, RESPONSE, USER, FILE } = require('../util/');
+
+describe('UserController', () => {
+    it('Deve criar usuário com sucesso', async () => {
+        // ... (seu teste completo)
+    });
+
+    it('Deve logar usuário com sucesso', async () => {
+        // ... (seu teste completo)
+    });
+});
+</code></pre>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  Exemplo de Teste de Integração (PetsController.test.js)
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#testExamplesAccordion">
+                <div class="accordion-body">
+                  <pre><code>// test/unit/PetsController.test.js
+const supertest = require('supertest');
+describe('PetsController', () => {
+    it('Deve obter pet com sucesso', async () => {
+        await supertest(sails.hooks.http.app)
+            .get('/pet')
+            .set('Authorization', 'Bearer ...') // Token de autenticação (se necessário)
+            .expect(200)
+            .expect([]); // Resultado esperado
+    });
+});
+</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <strong>Executando os Testes:</strong>
+          <pre><code>mocha test/unit/**/*.test.js</code></pre>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5">
+  <h2 class="text-center mb-4 display-6">Aprenda Mais Sobre Testes Unitários</h2>
+  <p class="text-center lead mb-5">Assista a este vídeo para aprofundar seus conhecimentos sobre testes unitários em
+    JavaScript.</p>
+
+  <div class="ratio ratio-16x9">
+    <iframe src="https://www.youtube.com/embed/J635mqk769k?si=2XyAL2jfczaMKIxC" title="YouTube video"
+      allowfullscreen></iframe>
+  </div>
+</section>
+
+<section class="container py-5">
+  <div class="card bg-light shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title text-center display-6">Desafio Prático: Testes Unitários em Ação!</h2>
+      <p class="card-text text-center lead mb-4">Coloque seus conhecimentos em prática e fortaleça a qualidade do seu
+        código!</p>
+
+      <div class="ratio ratio-16x9 mb-4">
+        <iframe src="https://www.youtube.com/embed/i4aYlf292aE?si=MsC57v-_jtYcVOR_" title="YouTube video"
+          allowfullscreen></iframe>
+      </div>
+
+      <h3 class="card-subtitle mb-3"><i class="bi bi-code-slash"></i> Descrição</h3>
+      <p class="card-text">
+        Sua missão é criar um teste unitário para um service de dados em JavaScript, seguindo as etapas detalhadas no
+        vídeo acima.
+      </p>
+
+      <h4 class="card-subtitle mb-3"><i class="bi bi-file-earmark-text-fill"></i> Instruções</h4>
+      <p class="card-text">
+        As instruções completas para este desafio estão disponíveis neste documento: <a
+          href="https://docs.google.com/document/d/1TtGm3JUtc_lA4R9SFVPTRX0ssNvfaJ463avJacxU6WM/edit?usp=sharing"
+          target="_blank">Instruções do Desafio</a>
+      </p>
+
+      <h4 class="card-subtitle mb-3"><i class="bi bi-box-arrow-up-right"></i> Formato de Entrega</h4>
+      <p class="card-text">
+        Compartilhe o link da branch no GitHub do projeto do seu grupo, contendo o teste unitário implementado.
+      </p>
+
+      <h4 class="card-subtitle mb-3"><i class="bi bi-check2-square"></i> Critérios de Avaliação</h4>
+      <ol class="list-group list-group-numbered">
+        <li class="list-group-item">Identificação do Service de Dados Existente (0,5 ponto)</li>
+        <li class="list-group-item">Desenvolvimento do Teste Unitário (7,5 pontos)
+          <ul>
+            <li>Cobertura de Casos de Teste (2,5 pontos)</li>
+            <li>Utilização de Asserções (2 pontos)</li>
+            <li>Isolamento de Dependências (2 pontos)</li>
+            <li>Qualidade do Código (1 ponto)</li>
+          </ul>
+        </li>
+        <li class="list-group-item">Execução e Análise dos Testes Unitários (2 pontos)
+          <ul>
+            <li>Execução dos Testes (1 ponto)</li>
+            <li>Análise dos Resultados (1 ponto)</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
