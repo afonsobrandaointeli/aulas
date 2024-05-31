@@ -427,6 +427,101 @@
   </div>
 </section>
 
+<section class="container py-5" id="testes-aaa">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <h1 class="display-4 mb-4">
+        <i class="fas fa-layer-group me-2 text-warning"></i> Testes AAA: Organizando seus Testes JavaScript com Mocha
+      </h1>
+
+      <p class="lead">
+        O padrão AAA (Arrange, Act, Assert) é uma estrutura popular para organizar testes de software, tornando-os mais
+        legíveis, compreensíveis e fáceis de manter. Vamos ver como aplicá-lo em testes JavaScript usando o framework
+        Mocha.
+      </p>
+
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <h5 class="card-title text-primary"><i class="fas fa-cogs me-2"></i> Arrange (Organizar)</h5>
+              <p class="card-text">
+                Prepare o ambiente de teste. Crie objetos, configure dependências, inicialize dados e prepare tudo o que
+                é necessário para executar a ação que você deseja testar.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <h5 class="card-title text-danger"><i class="fas fa-running me-2"></i> Act (Agir)</h5>
+              <p class="card-text">
+                Execute a ação que está sendo testada. Chame o método, função ou componente que você deseja verificar o
+                comportamento.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <h5 class="card-title text-success"><i class="fas fa-check-circle me-2"></i> Assert (Afirmar)</h5>
+              <p class="card-text">
+                Verifique se o resultado da ação corresponde ao comportamento esperado. Utilize asserções para validar o
+                estado do sistema após a execução da ação.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="mt-4">Exemplo com Mocha</h2>
+
+      <div class="card">
+        <div class="card-body">
+          <pre><code class="language-javascript">
+const assert = require('assert');
+
+describe('Calculadora', () => {
+    // Arrange
+    const calculadora = new Calculadora();
+
+    it('deve somar dois números corretamente', () => {
+        // Act
+        const resultado = calculadora.somar(5, 3);
+
+        // Assert
+        assert.equal(resultado, 8);
+    });
+
+    it('deve subtrair dois números corretamente', () => {
+        // Act
+        const resultado = calculadora.subtrair(10, 4);
+
+        // Assert
+        assert.equal(resultado, 6);
+    });
+});
+                    </code></pre>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <p class="lead">
+          Neste exemplo, usamos o Mocha para descrever um conjunto de testes para uma classe <code>Calculadora</code>.
+          Cada teste segue o padrão AAA, tornando o código mais organizado e fácil de entender.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" />
+
+
 <section class="container py-5">
   <h2 class="text-center mb-4 display-6">Elevando a Qualidade do Seu Código JavaScript</h2>
   <p class="text-center lead mb-5">Conheça as ferramentas que garantem a confiabilidade e robustez do seu software.</p>
