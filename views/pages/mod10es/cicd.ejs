@@ -8,8 +8,33 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <style>
+  #qrcode-container {
+    position: fixed; /* Fixa o elemento na tela */
+    top: 20px; /* Distância do topo */
+    right: 20px; /* Distância da direita */
+    z-index: 1000; /* Garante que o QR Code fique por cima de outros elementos */
+    width: 150px; /* Largura do QR Code */
+    height: 150px; /* Altura do QR Code */
+  }
 
+  #qrcode-container img {
+      width: 100%; /* Faz a imagem ocupar toda a largura do container */
+      height: auto; /* Ajusta a altura automaticamente para manter a proporção */
+  }
+
+  /* Responsividade para telas menores */
+  @media (max-width: 768px) {
+      #qrcode-container {
+          width: 80px;
+          height: 80px;
+      }
+  }
 </style>
+
+<div id="qrcode-container" class="mt-5">
+  <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1717116252/Captura_de_tela_2024-05-31_004428_iwzz4l.png"
+    alt="QR Code">
+</div>
 
 <section class="container py-5 mt-5" id="roadmap">
   <div class="row justify-content-center">
@@ -401,7 +426,24 @@ CMD ["./main"]
   </div>
 </section>
 
+<section class="container py-5 mb-5" id="avaliacao">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card text-center border-info shadow">
+        <div class="card-header bg-info text-white">
+          <i class="fas fa-comment-dots me-2"></i> Sua Opinião é Importante!
+        </div>
+        <div class="card-body">
+          <p class="lead">
+            Deixe seu feedback com estrelas e comentários e
+            ajude-nos a melhorar o Inteli e o curso de ES.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
   integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
   crossorigin="anonymous" referrerpolicy="no-referrer" />
-

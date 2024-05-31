@@ -1,1 +1,662 @@
-PERFORMANCE
+<!-- CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- JS com Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- JavaScript dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+  #qrcode-container {
+    position: fixed;
+    /* Fixa o elemento na tela */
+    top: 20px;
+    /* Distância do topo */
+    right: 20px;
+    /* Distância da direita */
+    z-index: 1000;
+    /* Garante que o QR Code fique por cima de outros elementos */
+    width: 150px;
+    /* Largura do QR Code */
+    height: 150px;
+    /* Altura do QR Code */
+  }
+
+  #qrcode-container img {
+    width: 100%;
+    /* Faz a imagem ocupar toda a largura do container */
+    height: auto;
+    /* Ajusta a altura automaticamente para manter a proporção */
+  }
+
+  /* Responsividade para telas menores */
+  @media (max-width: 768px) {
+    #qrcode-container {
+      width: 80px;
+      height: 80px;
+    }
+  }
+</style>
+
+<div id="qrcode-container" class="mt-5">
+  <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1717127497/Captura_de_tela_2024-05-31_035154_esxhen.png"
+    alt="QR Code">
+</div>
+
+<section class="container py-5 mt-5" id="roadmap">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <h1 class="display-4 mb-4">Roadmap das Aulas</h1>
+
+      <p class="lead text-center">
+        Confira o cronograma das aulas e os tópicos que serão abordados:
+      </p>
+
+      <div class="text-center">
+        <img
+          src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1717115396/Captura_de_tela_2024-05-31_002953_evnk75.png"
+          alt="Roadmap das Aulas" class="img-fluid rounded shadow">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="container" style="margin-top: 80px;">
+  <div>
+    <h1 class="mb-4">Aspectos avançados de programação: Vamos falar sobre performance de código?</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Curso</th>
+          <th>Semana</th>
+          <th>Pontuação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <a href="https://philos.sophia.com.br/terminal/9418/acervo/detalhe/16553?guid=1701182055297%20e%20returnUrl=%2fterminal%2f9418%2fresultado%2flistar%3fguid%3d1701182055297%26quantidadePaginas%3d1%26codigoRegistro%3d16553%2316553%20e%20i=1"
+              target="_blank" class="btn btn-link text-decoration-none text-dark fw-bold">
+              <i class="fa-brands fa-uncharted"></i> Padrões de software
+
+            </a>
+          </td>
+          <td>Semana 08</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://www.youtube.com/watch?v=Tuok3H5Girw" target="_blank"
+              class="btn btn-link text-decoration-none text-dark fw-bold">
+              <i class="fa-solid fa-arrows-to-dot"></i> Manipulação de bits: uma técnica essencial para programação de alta performance
+            </a>
+          </td>
+          <td>Semana 08</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://learn.microsoft.com/en-us/dotnet/standard/garbage-collection/fundamentals" target="_blank"
+              class="btn btn-link text-decoration-none text-dark fw-bold">
+              <i class="fa-solid fa-trash"></i> Fundamentals of garbage collection
+              Livre
+            </a>
+          </td>
+          <td>Semana 08</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://www.gta.ufrj.br/~cruz/courses/eel770/slides/9_memoria.pdf" target="_blank"
+              class="btn btn-link text-decoration-none text-dark fw-bold">
+              <i class="fa-solid fa-memory"></i> Mapa de memória de um processo
+            </a>
+          </td>
+          <td>Semana 08</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="https://learn.microsoft.com/pt-br/aspnet/core/log-mon/metrics/metrics?view=aspnetcore-8.0"
+              target="_blank" class="btn btn-link text-decoration-none text-dark fw-bold">
+              <i class="fa-solid fa-star"></i> Coletando métricas
+            </a>
+          </td>
+          <td>Semana 08</td>
+          <td>2</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="container py-5" id="telemetria-vs-logs">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-center display-5 mb-4">
+        <i class="fas fa-chart-line me-2 text-warning"></i> Telemetria vs. Logs de Negócio: Entendendo a Diferença
+      </h2>
+
+      <p class="lead text-center">
+        Compreender a distinção entre telemetria e logs de negócio é importante para construir um sistema de monitoramento
+        eficiente e obter insights valiosos sobre o desempenho e o comportamento do seu software.
+      </p>
+
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-header bg-warning text-white">
+              Telemetria
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                A telemetria é a coleta automatizada de dados sobre o desempenho, o uso e a saúde do seu software em
+                tempo real. Ela fornece informações sobre métricas como tempo de resposta, utilização de recursos, taxas
+                de erro e comportamento do usuário.
+              </p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Dados quantitativos</li>
+                <li class="list-group-item">Foco em métricas e indicadores</li>
+                <li class="list-group-item">Usada para monitoramento e análise de tendências</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+              Logs de Negócio
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                Os logs de negócio registram eventos específicos relacionados às atividades do seu software, como
+                transações, logins de usuários, alterações de dados e erros. Eles fornecem um registro detalhado do que
+                aconteceu em um determinado momento.
+              </p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Dados qualitativos</li>
+                <li class="list-group-item">Foco em eventos e ações</li>
+                <li class="list-group-item">Usados para auditoria, depuração e análise de causa raiz</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5" id="exemplos-logs">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-center display-5 mb-4">
+        <i class="fas fa-code me-2 text-info"></i> Exemplos de Envio de Logs de Negócio
+      </h2>
+
+      <p class="lead text-center">
+        Veja como enviar logs de negócio para o InfluxDB usando Python e NestJS:
+      </p>
+
+      <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+          Python
+        </div>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>
+from influxdb_client import InfluxDBClient, Point
+from influxdb_client.client.write_api import SYNCHRONOUS
+import os
+
+# Configuração do InfluxDB (substitua pelos seus dados)
+url = os.getenv('INFLUXDB_URL')
+token = os.getenv('INFLUXDB_TOKEN')
+org = os.getenv('INFLUXDB_ORG')
+bucket = os.getenv('INFLUXDB_BUCKET')
+
+client = InfluxDBClient(url=url, token=token, org=org)
+write_api = client.write_api(write_options=SYNCHRONOUS)
+
+point = Point("login_events").tag("user", "john_doe").field("success", True)
+write_api.write(bucket=bucket, org=org, record=point)
+                    </code></pre>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header bg-success text-white">
+          NestJS
+        </div>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>
+import { Injectable } from '@nestjs/common';
+import { InfluxDB, Point } from '@influxdata/influxdb-client';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
+@Injectable()
+export class LoggingService {
+  private readonly influxDB: InfluxDB;
+
+  constructor() {
+    this.influxDB = new InfluxDB({
+      url: process.env.INFLUXDB_URL,
+      token: process.env.INFLUXDB_TOKEN,
+    });
+  }
+
+  async logEvent(event: string, data: any = {}) {
+    const writeApi = this.influxDB.getWriteApi(process.env.INFLUXDB_ORG, process.env.INFLUXDB_BUCKET);
+    const point = new Point(event).tag('source', 'backend').fields(data);
+    writeApi.writePoint(point);
+    await writeApi.close();
+  }
+}
+                    </code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5" id="influxdb-docker">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-center display-5 mb-4">
+        <i class="fab fa-docker me-2 text-primary"></i> InfluxDB com Docker: Rápido e Fácil
+      </h2>
+
+      <p class="lead text-center">
+        Inicie rapidamente uma instância do InfluxDB usando o Docker e explore o exemplo de código em Python para enviar
+        métricas:
+      </p>
+
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          Comando Docker
+        </div>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>
+docker run -d -p 8086:8086 --name my-influxdb influxdb:latest
+                    </code></pre>
+          <p class="card-text">Este comando baixa e executa um container Docker com o InfluxDB na porta 8086. Substitua
+            os valores de `admin` e `admin` por suas credenciais preferidas.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header bg-success text-white">
+          Código Python (app.py)
+        </div>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>
+from flask import Flask
+from prometheus_client import Gauge, start_http_server
+from influxdb_client import InfluxDBClient, Point, WritePrecision
+from influxdb_client.client.write_api import SYNCHRONOUS
+import random
+import time
+from dotenv import load_dotenv
+import os
+
+# Carrega as variáveis de ambiente do arquivo .env
+load_dotenv()
+
+app = Flask(__name__)
+
+# Conexão com o InfluxDB (lendo do .env)
+influx_url = os.getenv('INFLUXDB_URL')
+influx_token = os.getenv('INFLUXDB_TOKEN')
+influx_org = os.getenv('INFLUXDB_ORG')
+influx_bucket = os.getenv('INFLUXDB_BUCKET')
+
+try:
+    client = InfluxDBClient(url=influx_url, token=influx_token, org=influx_org)
+    write_api = client.write_api(write_options=SYNCHRONOUS)
+except Exception as e:
+    print(f"Erro ao conectar ao InfluxDB: {e}")
+    exit(1)  # Encerra o aplicativo se não conseguir conectar ao InfluxDB
+
+# Métricas
+temperature = Gauge('temperature_celsius', 'Temperature in Celsius')
+humidity = Gauge('humidity_percent', 'Humidity in Percentage')
+pressure = Gauge('pressure_hpa', 'Pressure in hPa')
+
+@app.route('/')
+def index():
+    return "Hello, World!"
+
+def generate_metrics():
+    while True:
+        temperature.set(random.uniform(15, 35))
+        humidity.set(random.uniform(40, 80))
+        pressure.set(random.uniform(980, 1030))
+
+        point = Point("metrics").tag("host", "server01").\
+            field("temperature", temperature._value.get()).\
+            field("humidity", humidity._value.get()).\
+            field("pressure", pressure._value.get()).\
+            time(int(time.time_ns()), WritePrecision.NS)
+
+        try:
+            write_api.write(bucket=influx_bucket, org=influx_org, record=point)
+        except Exception as e:
+            print(f"Erro ao escrever no InfluxDB: {e}")
+
+        time.sleep(1)
+
+if __name__ == '__main__':
+    start_http_server(8000)
+    generate_metrics()
+    app.run(host='0.0.0.0', port=5000)
+          </code></pre>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-header">
+          .env
+        </div>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>
+INFLUXDB_URL=http://localhost:8086
+INFLUXDB_TOKEN=
+INFLUXDB_ORG=
+INFLUXDB_BUCKET=
+                    </code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="container py-5" id="influxdb">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-center display-5 mb-4">
+        <i class="fas fa-database me-2 text-danger"></i> InfluxDB: A Base para suas Métricas
+      </h2>
+
+      <p class="lead text-center">
+        O InfluxDB é um banco de dados especializado em séries temporais, ideal para armazenar e analisar dados que
+        mudam ao longo do tempo, como métricas, eventos e logs.
+      </p>
+
+      <div class="row mt-4">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Por que escolher o InfluxDB?</h5>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Otimizado para séries temporais: Alta performance na escrita e consulta de
+                  dados com timestamps.</li>
+                <li class="list-group-item">Modelo de dados flexível: Permite armazenar dados com tags e campos
+                  personalizados.</li>
+                <li class="list-group-item">Linguagem de consulta poderosa: Flux, uma linguagem de consulta SQL-like
+                  para manipular e agregar dados de séries temporais.</li>
+                <li class="list-group-item">Integração com outras ferramentas: Compatível com Prometheus, Grafana e
+                  outras ferramentas do ecossistema de monitoramento.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="text-center mt-4">Comparativo com MongoDB e Prometheus</h3>
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th>InfluxDB</th>
+            <th>MongoDB</th>
+            <th>Prometheus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tipo de dados</td>
+            <td>Séries temporais</td>
+            <td>Documentos (JSON)</td>
+            <td>Métricas</td>
+          </tr>
+          <tr>
+            <td>Modelo de dados</td>
+            <td>Flexível (tags e campos)</td>
+            <td>Flexível (sem esquema)</td>
+            <td>Métricas com rótulos</td>
+          </tr>
+          <tr>
+            <td>Linguagem de consulta</td>
+            <td>Flux (SQL-like)</td>
+            <td>MongoDB Query Language (MQL)</td>
+            <td>PromQL</td>
+          </tr>
+          <tr>
+            <td>Armazenamento</td>
+            <td>Otimizado para séries temporais</td>
+            <td>Armazenamento geral</td>
+            <td>Armazenamento em memória</td>
+          </tr>
+          <tr>
+            <td>Uso principal</td>
+            <td>Monitoramento, análise de séries temporais</td>
+            <td>Armazenamento de dados de aplicativos, bancos de dados de propósito geral</td>
+            <td>Monitoramento, alertas</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5" id="observabilidade">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-center display-5 mb-4">
+        <i class="fas fa-eye me-2 text-info"></i> OpenTelemetry, Dynatrace e Prometheus: Observabilidade Aprimorada
+      </h2>
+
+      <p class="lead text-center">
+        Explore as ferramentas que elevam a observabilidade do seu sistema, permitindo monitorar, rastrear e analisar o
+        desempenho de suas aplicações de forma abrangente.
+      </p>
+
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-header bg-info text-white">
+              OpenTelemetry
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                OpenTelemetry é um conjunto de APIs, SDKs, ferramentas e integrações que permite instrumentar, gerar,
+                coletar e exportar dados de telemetria (traces, métricas e logs) para análise.
+              </p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Padrão aberto e independente de fornecedor</li>
+                <li class="list-group-item">Coleta de dados de telemetria completa</li>
+                <li class="list-group-item">Integração com diversas ferramentas de observabilidade</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-header bg-success text-white">
+              Dynatrace
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                Dynatrace é uma plataforma de observabilidade completa que oferece monitoramento de aplicações,
+                infraestrutura, experiência do usuário e análise de negócios.
+              </p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Monitoramento full-stack</li>
+                <li class="list-group-item">Detecção automática de problemas</li>
+                <li class="list-group-item">Análise de causa raiz com inteligência artificial</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100">
+            <div class="card-header bg-secondary text-white">
+              Prometheus
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                Prometheus é um sistema de monitoramento e alerta de código aberto, projetado para coletar métricas de
+                séries temporais.
+              </p>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Coleta de métricas em tempo real</li>
+                <li class="list-group-item">Linguagem de consulta poderosa (PromQL)</li>
+                <li class="list-group-item">Alertas flexíveis</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5" id="tbl-atividade">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-center display-5 mb-4">
+        <i class="fas fa-users me-2 text-primary"></i> Aplicando a Aprendizagem Baseada em Times (TBL) com Autoestudo Ponderado
+      </h2>
+
+      <p class="lead text-center">
+        Agora é hora de colocar em prática o que você aprendeu sobre métricas, logs e observabilidade! Nesta atividade
+        TBL, você trabalhará em equipes mistas para aplicar o autoestudo "Como extrair boas métricas da sua aplicação"
+        em um projeto prático.
+      </p>
+
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Desafio TBL:</h5>
+          <p class="card-text">
+            Seu time receberá um repositório base para o projeto. Utilizando os conceitos de métricas, logs e as
+            ferramentas apresentadas (InfluxDB, Prometheus, Grafana, OpenTelemetry), vocês deverão:
+          </p>
+          <ol>
+            <li>Coletar métricas relevantes da aplicação.</li>
+            <li>Implementar o Prometheus para coletar e armazenar as métricas.</li>
+            <li>Configurar o Grafana para visualizar as métricas em dashboards.</li>
+            <li>Documentar todo o processo em um arquivo README.md, incluindo:
+              <ul>
+                <li>Passo a passo detalhado da implementação.</li>
+                <li>Prints das métricas coletadas e dos dashboards do Grafana.</li>
+                <li>Explicações claras e objetivas sobre as decisões tomadas.</li>
+                <li>Uso de commits semânticos para facilitar o acompanhamento do desenvolvimento.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#instrucoesModal">
+          <i class="fas fa-info-circle me-2"></i> Instruções Completas
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="instrucoesModal" tabindex="-1" aria-labelledby="instrucoesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="instrucoesModalLabel">Instruções Completas do Desafio TBL</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="lead">
+            <strong>Descrição:</strong>
+          </p>
+          <p>
+            Como extrair boas métricas da sua aplicação
+          </p>
+          <p class="lead">
+            <strong>Conteúdos Relacionados:</strong>
+          </p>
+          <p>
+            Coletando Métricas
+          </p>
+          <p class="lead">
+            <strong>Pergunta:</strong>
+          </p>
+          <p>
+            Crie um repositório para armazenar os códigos gerados no autoestudo. Siga o passo a passo, implementando a
+            coleta de métricas, implementação do Prometheus e Grafana.
+          </p>
+          <p>
+            Documente o passo a passo em arquivo readme de forma que possa ser reproduzido posteriormente. Utilize
+            prints e texto de forma clara, objetiva e coesa.
+          </p>
+          <p>
+            Crie uma seção demonstrando os gráficos em funcionamento.
+          </p>
+          <p class="lead">
+            <strong>Barema:</strong>
+          </p>
+          <ul>
+            <li>Codificação de todas as etapas - 3 pontos</li>
+            <li>Código e Testes compilando e executando sem erros - 2 pontos</li>
+            <li>Métricas coletadas e evidenciadas no relatório - 2 pontos</li>
+            <li>Commit semântico e Organização do relatório - 1 ponto</li>
+            <li>Relatório em markdown escrito de forma clara, concisa e objetiva - 2 pontos</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="container py-5" id="autoestudo-ponderado">
+  <div class="row justify-content-center">
+    <div class="col-md-8 text-center">
+      <h2 class="display-5 mb-4">
+        <i class="fas fa-book-reader me-2 text-success"></i> Autoestudo Ponderado
+      </h2>
+
+      <div class="text-center">
+        <img
+          src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1717121132/Captura_de_tela_2024-05-31_020525_uqy7l0.png"
+          alt="Guia de Autoestudo Ponderado" class="img-fluid rounded shadow">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5 mb-5" id="avaliacao">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card text-center border-info shadow">
+        <div class="card-header bg-info text-white">
+          <i class="fas fa-comment-dots me-2"></i> Sua Opinião é Importante!
+        </div>
+        <div class="card-body">
+          <p class="lead">
+            Deixe seu feedback com estrelas e comentários e
+            ajude-nos a melhorar o Inteli e o curso de ES.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
