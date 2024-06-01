@@ -9,25 +9,33 @@
 
 <style>
   #qrcode-container {
-    position: fixed; /* Fixa o elemento na tela */
-    top: 20px; /* Distância do topo */
-    right: 20px; /* Distância da direita */
-    z-index: 1000; /* Garante que o QR Code fique por cima de outros elementos */
-    width: 150px; /* Largura do QR Code */
-    height: 150px; /* Altura do QR Code */
+    position: fixed;
+    /* Fixa o elemento na tela */
+    top: 20px;
+    /* Distância do topo */
+    right: 20px;
+    /* Distância da direita */
+    z-index: 1000;
+    /* Garante que o QR Code fique por cima de outros elementos */
+    width: 150px;
+    /* Largura do QR Code */
+    height: 150px;
+    /* Altura do QR Code */
   }
 
   #qrcode-container img {
-      width: 100%; /* Faz a imagem ocupar toda a largura do container */
-      height: auto; /* Ajusta a altura automaticamente para manter a proporção */
+    width: 100%;
+    /* Faz a imagem ocupar toda a largura do container */
+    height: auto;
+    /* Ajusta a altura automaticamente para manter a proporção */
   }
 
   /* Responsividade para telas menores */
   @media (max-width: 768px) {
-      #qrcode-container {
-          width: 80px;
-          height: 80px;
-      }
+    #qrcode-container {
+      width: 80px;
+      height: 80px;
+    }
   }
 </style>
 
@@ -69,7 +77,8 @@
       <tbody>
         <tr>
           <td>
-            <a href="https://learn.microsoft.com/pt-br/devops/deliver/delivering-quality-services-with-devops" target="_blank" class="btn btn-link text-decoration-none text-dark fw-bold">
+            <a href="https://learn.microsoft.com/pt-br/devops/deliver/delivering-quality-services-with-devops"
+              target="_blank" class="btn btn-link text-decoration-none text-dark fw-bold">
               <i class="fas fa-globe-americas me-2"></i> Introdução ao fornecimento de serviços de qualidade com DevOps
             </a>
           </td>
@@ -90,7 +99,8 @@
           <td>
             <a href="https://www.youtube.com/watch?v=_XIIG4Ga3L8" target="_blank"
               class="btn btn-link text-decoration-none text-dark fw-bold">
-              <i class="fa-solid fa-store"></i> SRE e Disponibilidade: Experiências e desafios do DevOps no Mercado Livre
+              <i class="fa-solid fa-store"></i> SRE e Disponibilidade: Experiências e desafios do DevOps no Mercado
+              Livre
             </a>
           </td>
           <td>Semana 08</td>
@@ -108,8 +118,8 @@
         </tr>
         <tr>
           <td>
-            <a href="https://integrada.minhabiblioteca.com.br/reader/books/9788580555349/cfi/475!/4/2@100:0.00" target="_blank"
-              class="btn btn-link text-decoration-none text-dark fw-bold">
+            <a href="https://integrada.minhabiblioteca.com.br/reader/books/9788580555349/cfi/475!/4/2@100:0.00"
+              target="_blank" class="btn btn-link text-decoration-none text-dark fw-bold">
               <i class="fa-solid fa-star"></i> Garantia da qualidade de software
             </a>
           </td>
@@ -142,51 +152,63 @@
   </div>
 </section>
 
+<section class="container my-5 bg-light p-4 rounded shadow" id="cicd">
+  <h1 class="text-center display-4 mb-4">O que é CI/CD?</h1>
 
-<section class="container m-5" id="cicd">
-  <h1 class="text-center mb-4">O que é CI/CD?</h1>
-
-  <p>
+  <p class="lead">
     CI/CD, ou Integração Contínua e Entrega/Implantação Contínua, é um conjunto de práticas que automatizam o processo
     de desenvolvimento, teste e implantação de software. O objetivo é entregar software de forma mais rápida, frequente
     e confiável.
   </p>
 
   <div class="row">
-    <div class="col-md-6">
-      <h2 class="text-center">Integração Contínua (CI)</h2>
-      <p>
-        A CI envolve a integração frequente do código de todos os desenvolvedores em um repositório central. Cada
-        integração passa por testes automatizados para garantir que o código não introduza novos erros.
-      </p>
-      <ul>
-        <li>Integração frequente de código</li>
-        <li>Testes automatizados</li>
-        <li>Feedback rápido sobre erros</li>
-      </ul>
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="card-title text-center display-6">Integração Contínua (CI)</h2>
+          <p class="card-text">
+            A CI envolve a integração frequente do código de todos os desenvolvedores em um repositório central. Cada
+            integração passa por testes automatizados para garantir que o código não introduza novos erros.
+          </p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Integração frequente de código</li>
+            <li class="list-group-item">Testes automatizados</li>
+            <li class="list-group-item">Feedback rápido sobre erros</li>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="col-md-6">
-      <h2 class="text-center">Entrega/Implantação Contínua (CD)</h2>
-      <p>
-        A CD automatiza o processo de implantação do software em diferentes ambientes, como desenvolvimento, teste e
-        produção. O objetivo é garantir que o software esteja sempre pronto para ser implantado em produção.
-      </p>
-      <ul>
-        <li>Implantação automatizada</li>
-        <li>Ambientes de teste realistas</li>
-        <li>Entrega rápida de novas funcionalidades</li>
-      </ul>
+
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h2 class="card-title text-center display-6">Entrega/Implantação Contínua (CD)</h2>
+          <p class="card-text">
+            A CD automatiza o processo de implantação do software em diferentes ambientes, como desenvolvimento, teste e
+            produção. O objetivo é garantir que o software esteja sempre pronto para ser implantado em produção.
+          </p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Implantação automatizada</li>
+            <li class="list-group-item">Ambientes de teste realistas</li>
+            <li class="list-group-item">Entrega rápida de novas funcionalidades</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 
-  <p class="mt-4">
+  <p class="lead mt-4">
     O CI/CD é essencial para equipes que desejam entregar software de alta qualidade de forma rápida e eficiente. Ele
     ajuda a reduzir o tempo de lançamento, aumentar a frequência de entregas e melhorar a qualidade do software.
   </p>
+
   <div class="text-center">
-    <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1717111988/Captura_de_tela_2024-05-30_233310_enkayb.png" alt="">
+    <img
+      src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1717111988/Captura_de_tela_2024-05-30_233310_enkayb.png"
+      alt="Diagrama CI/CD" class="img-fluid rounded shadow">
   </div>
 </section>
+
 
 <section class="container py-5 bg-light rounded" id="garantia-qualidade">
   <div class="row justify-content-center">
@@ -360,30 +382,31 @@ CMD ["./main"]
 
 
 
-<section class="container py-5 bg-light rounded" id="desafio">
-    <div class="row justify-content-center">
-        <div class="col-md-8 text-center">
-            <h1 class="display-4 text-primary mb-4">Desafio! <i class="fas fa-rocket"></i></h1>
+<section class=" container py-5 bg-light rounded" id="desafio">
+<div class="row justify-content-center">
+  <div class="col-md-8 text-center">
+    <h1 class="display-4 text-primary mb-4">Desafio! <i class="fas fa-rocket"></i></h1>
 
-            <p class="lead">
-                Em sala de aula, vamos abrir e revisar juntos o pipeline de CI/CD criado neste projeto. Seu desafio será:
-            </p>
+    <p class="lead">
+      Em sala de aula, vamos abrir e revisar juntos o pipeline de CI/CD criado neste projeto. Seu desafio será:
+    </p>
 
-            <ol class="list-group list-group-numbered">
-                <li class="list-group-item">Clonar o repositório.</li>
-                <li class="list-group-item">Criar uma conta no Render.com.</li>
-                <li class="list-group-item">Fazer o deploy da aplicação, personalizando-a para exibir seu nome em vez de "Hello World".</li>
-                <li class="list-group-item">**Otimizar o Dockerfile utilizando a técnica de multi-stage build.**</li>
-            </ol>
+    <ol class="list-group list-group-numbered">
+      <li class="list-group-item">Clonar o repositório.</li>
+      <li class="list-group-item">Criar uma conta no Render.com.</li>
+      <li class="list-group-item">Fazer o deploy da aplicação, personalizando-a para exibir seu nome em vez de "Hello
+        World".</li>
+      <li class="list-group-item">**Otimizar o Dockerfile utilizando a técnica de multi-stage build.**</li>
+    </ol>
 
-            <div class="d-flex justify-content-center mt-4">
-                <a href="https://github.com/afonsobrandaointeli/cicd" target="_blank" rel="noopener noreferrer"
-                   class="btn btn-lg btn-outline-primary">
-                    <i class="fab fa-github me-2"></i> Repositório do Projeto no GitHub
-                </a>
-            </div>
-        </div>
+    <div class="d-flex justify-content-center mt-4">
+      <a href="https://github.com/afonsobrandaointeli/cicd" target="_blank" rel="noopener noreferrer"
+        class="btn btn-lg btn-outline-primary">
+        <i class="fab fa-github me-2"></i> Repositório do Projeto no GitHub
+      </a>
     </div>
+  </div>
+</div>
 </section>
 
 

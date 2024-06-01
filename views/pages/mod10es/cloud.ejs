@@ -8,6 +8,53 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <style>
+  body {
+    padding-top: 20px;
+  }
+
+  .highlight {
+    background-color: #f8f8f8;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+  }
+
+  .page-header {
+    margin-bottom: 30px;
+  }
+
+  .lead {
+    font-size: 1.25em;
+  }
+
+  .code-block {
+    background-color: #272822;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 5px;
+    overflow: auto;
+    font-size: 0.85em;
+  }
+
+  .code-block pre {
+    margin: 0;
+  }
+
+  .section-title {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  .list-group-item {
+    font-size: 1.1em;
+  }
+
+  .btn-custom {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+  }
+
   #qrcode-container {
     position: fixed;
     /* Fixa o elemento na tela */
@@ -65,7 +112,6 @@
     </div>
   </div>
 </section>
-
 
 <section class="container" style="margin-top: 80px;">
   <div>
@@ -138,17 +184,359 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="d-flex justify-content-around">
-        <a href="https://github.com/afonsobrandaointeli/terraform-demo" class="btn btn-primary btn-lg" target="_blank">
+        <a href="https://github.com/afonsobrandaointeli/terraform-demo" class="btn btn-primary btn-lg mx-2"
+          target="_blank">
           <i class="fab fa-github"></i> Repositório GitHub
         </a>
         <a href="https://cloud.google.com/docs/terraform/resource-management/managing-infrastructure-as-code?hl=pt-br"
-          class="btn btn-secondary btn-lg" target="_blank">
+          class="btn btn-secondary btn-lg mx-2" target="_blank">
           <i class="fab fa-google"></i> Documentação GCP
         </a>
         <a href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli"
-          class="btn btn-info btn-lg" target="_blank">
+          class="btn btn-info btn-lg mx-2" target="_blank">
           <i class="fas fa-download"></i> Instalação Terraform
         </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container py-5">
+  <div class="row">
+    <div class="col">
+      <div class="page-header">
+        <h1>Infraestrutura como Código e Projetos</h1>
+      </div>
+      <p class="lead">Plano de aula</p>
+
+      <h2 class="section-title">O que é infraestrutura como código</h2>
+      <p>Que problemas você encontrou ao criar recursos na nuvem até agora? ❓</p>
+      <p>Uma solução é Infraestrutura como Código 💡</p>
+      <p>Infraestrutura como código (IaC) é a prática de definir os recursos de nuvem que você precisa em código e, em
+        seguida, permitir que eles sejam criados por meio dessas ferramentas em vez de manualmente pelo provedor de
+        nuvem.</p>
+
+      <h3 class="section-title">Exemplo</h3>
+      <p>Por exemplo, em vez de criar uma máquina virtual diretamente, descrevemos a máquina virtual em código e depois
+        permitimos que nossa ferramenta, no nosso caso Terraform, a crie para nós!</p>
+      <p>❗️ Isso parece trabalho adicional 😅</p>
+
+      <h3 class="section-title">Benefícios 🟢</h3>
+      <ul class="list-group mb-4">
+        <li class="list-group-item">Escalabilidade: Com infraestrutura como código, as equipes podem provisionar e
+          desprovisionar rapidamente recursos de infraestrutura para atender às necessidades do negócio.</li>
+        <li class="list-group-item">Consistência: Como a infraestrutura é definida em código, as equipes têm mais
+          confiança de que o ambiente será consistente em todas as implantações.</li>
+        <li class="list-group-item">Gerenciamento de mudanças: Quando alterações são feitas no código de infraestrutura,
+          fica mais fácil rastrear e gerenciar essas mudanças ao longo do tempo.</li>
+        <li class="list-group-item">Colaboração: A infraestrutura como código incentiva a colaboração e o controle de
+          versão para garantir o mesmo ambiente em todas as equipes.</li>
+      </ul>
+
+      <h3 class="section-title">Desvantagens ❌</h3>
+      <ul class="list-group mb-4">
+        <li class="list-group-item">Complexidade: Com infraestrutura como código, você acaba com uma grande base de
+          código que pode ser difícil de gerenciar.</li>
+        <li class="list-group-item">Tempo: Escrever infraestrutura como código leva muito tempo inicialmente, então para
+          projetos pequenos pode ser mais eficiente não utilizá-lo!</li>
+        <li class="list-group-item">Bloqueio: A maioria da infraestrutura como código é específica para o provedor de
+          nuvem, se você quiser mudar de provedor, também precisará migrar todo o seu IaC!</li>
+      </ul>
+
+      <h3 class="section-title">Vamos ver na prática 🛠!</h3>
+
+      <h2 class="section-title">Terraform</h2>
+      <p>Terraform é uma ferramenta IaC de código aberto desenvolvida pela HashiCorp. O Terraform é diferente de outras
+        ferramentas IaC porque se concentra na construção de uma representação estática da infraestrutura desejada e, em
+        seguida, atualiza incrementalmente a infraestrutura com base nas mudanças de configuração.</p>
+
+      <h3 class="section-title">Principais benefícios do Terraform:</h3>
+      <ul class="list-group mb-4">
+        <li class="list-group-item">Sintaxe declarativa: Com o Terraform, você descreve o estado desejado de sua
+          infraestrutura em uma sintaxe declarativa, o que facilita o entendimento e o raciocínio.</li>
+        <li class="list-group-item">Suporte multi-cloud: O Terraform suporta vários provedores de nuvem, permitindo que
+          você use uma única ferramenta para gerenciar infraestrutura em diferentes plataformas.</li>
+        <li class="list-group-item">Dependências de recursos: O Terraform determina automaticamente a ordem das
+          operações necessárias para criar recursos de infraestrutura com dependências de outros recursos (muito
+          importante para configurações complexas).</li>
+        <li class="list-group-item">Gerenciamento de estado: Através do uso de arquivos de estado, o Terraform rastreia
+          mudanças na infraestrutura e ajuda a prevenir a divergência de configuração (crítico para trabalho em equipe).
+        </li>
+      </ul>
+
+      <h3 class="section-title">Terraform suporta JSON, mas é projetado para usar HCL (HashiCorp Configuration Language)
+      </h3>
+      <div class="code-block mb-4">
+        <pre><code class="language-json">
+JSON
+{
+  "resource": {
+    "google_compute_instance": {
+      "example": {
+        "name": "my-instance",
+        "machine_type": "n1-standard-1",
+        "zone": "us-central1-a"
+      }
+    }
+  }
+}
+        </code></pre>
+      </div>
+
+      <div class="code-block mb-4">
+        <pre><code class="language-hcl">
+HCL
+resource "google_compute_instance" "example" {
+  name         = "my-instance"
+  machine_type = "n1-standard-1"
+  zone         = "us-central1-a"
+}
+        </code></pre>
+      </div>
+
+      <h3 class="section-title">Vamos configurar cinco bancadas de trabalho com Debian!</h3>
+      <p>1️⃣ Autentique no gcloud para que o TF tenha permissão para criar recursos</p>
+      <div class="code-block mb-4">
+        <pre><code class="language-bash">
+gcloud auth application-default login
+        </code></pre>
+      </div>
+
+      <p>2️⃣ Defina seu provedor, informando ao terraform que queremos usar o google e quais projetos criar os recursos!
+      </p>
+      <div class="code-block mb-4">
+        <pre><code class="language-hcl">
+provider.tf
+provider "google" {
+  project = "your-project"
+}
+        </code></pre>
+      </div>
+
+      <p>3️⃣ Defina a criação de uma instância de computação</p>
+      <div class="code-block mb-4">
+        <pre><code class="language-hcl">
+main.tf
+resource "google_compute_instance" "my-instance" {
+  name         = "lecture-instance"
+  machine_type = "e2-medium"
+  zone         = "europe-west1-a"
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-11"
+    }
+  }
+
+  network_interface {
+    network = "default"
+    access_config {
+    }
+  }
+}
+        </code></pre>
+      </div>
+
+      <p>4️⃣ Aplique os arquivos</p>
+      <div class="code-block mb-4">
+        <pre><code class="language-bash">
+terraform init
+terraform plan
+terraform apply
+        </code></pre>
+      </div>
+
+      <p>5️⃣ Vamos agora criar 5 instâncias 🚀</p>
+      <div class="code-block mb-4">
+        <pre><code class="language-hcl">
+main.tf
+resource "google_compute_instance" "my-instance" {
+  name         = "lecture-instance-${count.index}"
+  machine_type = "e2-medium"
+  zone         = "europe-west1-b"
+  count        = 5
+
+  boot_disk {
+    initialize_params {
+      image = "debian-cloud/debian-11"
+    }
+  }
+
+  network_interface {
+    network = "default"
+    access_config {
+    }
+  }
+}
+        </code></pre>
+      </div>
+
+      <p>6️⃣ Também podemos tornar o número dinâmico</p>
+      <div class="code-block mb-4">
+        <pre><code class="language-hcl">
+variable.tf
+variable "machine_count" {
+  description = "Número de instâncias a criar"
+  type        = number
+  default     = 5
+}
+main.tf
+count = var.machine_count
+        </code></pre>
+      </div>
+
+      <h3 class="section-title">Agora que temos uma maneira de criar dinamicamente quantas máquinas precisamos, vamos
+        ver alguns conceitos que podem nos ajudar a estender o terraform</h3>
+
+      <h2 class="section-title">Avançando</h2>
+      <h3 class="section-title">Estado remoto</h3>
+      <p>No momento, o estado é armazenado localmente, então se você compartilhar o código via git e seu colega executar
+        terraform apply, teremos várias cópias dos recursos. Em vez disso, queremos configurá-lo para que o estado seja
+        armazenado remotamente em um bucket para que todos em nossa equipe tenham acesso ao estado atual dos recursos!
+      </p>
+      <div class="code-block mb-4">
+        <pre><code class="language-hcl">
+terraform {
+  backend "gcs" {
+    bucket = "your-state-bucket"
+  }
+}
+        </code></pre>
+      </div>
+
+      <h3 class="section-title">Módulos</h3>
+      <p>Queremos poder reutilizar o código para evitar repetir a nós mesmos! Módulos nos permitem reutilizar
+        rapidamente o código do terraform e usar diferentes variáveis cada vez</p>
+      <div class="code-block mb-4">
+        <pre><code class="language-hcl">
+module "machines" {
+  source        = "path/to/module"
+  machine_count = 7
+}
+        </code></pre>
+      </div>
+
+      <h3 class="section-title">Workspaces</h3>
+      <p>Você frequentemente deseja tanto um ambiente de teste quanto um de produção, você tem duas opções:</p>
+      <ul>
+        <li>Criar duas pastas, uma para desenvolvimento e outra para produção, cada uma com seus próprios arquivos</li>
+        <li>Usar workspaces (https://developer.hashicorp.com/terraform/language/state/workspaces)</li>
+      </ul>
+      <p>No código</p>
+      <div class="code-block mb-4">
+        <pre><code class="language-hcl">
+count = "${terraform.workspace == "production" ? 5 : 1}"
+        </code></pre>
+      </div>
+      <p>Alternando com a CLI</p>
+      <div class="code-block mb-4">
+        <pre><code class="language-bash">
+terraform workspace new production
+terraform workspace select production
+        </code></pre>
+      </div>
+
+      <h3 class="section-title">Terragrunt</h3>
+      <p>O Terraform cria muitos boilerplates mesmo quando otimizado usando módulos etc... O Terragrunt resolve muitos
+        desses problemas e automatiza a criação de boilerplates</p>
+      <p>❗️ Aviso: não importa o que, escrever infraestrutura como código gerará uma grande base de código</p>
+
+      <h3 class="section-title">Ansible</h3>
+
+      <h2 class="section-title">Organização de Projetos</h2>
+      <h3 class="section-title">Comece com um repositório</h3>
+      <ul>
+        <li>Controle de Versão: Rastreie de forma eficiente as mudanças nos pipelines de dados, scripts e configurações,
+          permitindo fácil reversão e colaboração.</li>
+        <li>Colaboração: Simplifique o desenvolvimento em equipe por meio de recursos como pull requests, issues e
+          revisões de código.</li>
+        <li>Integração: Integração perfeita com ferramentas CI/CD e plataformas de dados para testes e implantação
+          automáticos de fluxos de trabalho de engenharia de dados.</li>
+      </ul>
+      <h3 class="section-title">Comandos</h3>
+      <div class="code-block mb-4">
+        <pre><code class="language-bash">
+poetry new lewagon-project
+git init
+gh repo create --private --source=.
+        </code></pre>
+      </div>
+      <p>Em seguida, adicione colaboradores!</p>
+      <p>Não se esqueça de utilizar ações do GitHub para manter o projeto bem organizado e limpo!</p>
+      <p>📚 Excelente cheat sheet do Git: <a href="https://education.github.com/git-cheat-sheet-education.pdf"
+          target="_blank">Git Cheat Sheet</a></p>
+
+      <h3 class="section-title">Escolha sua stack</h3>
+      <ul>
+        <li>Eficiência e Escalabilidade: Escolher a stack tecnológica certa garante processamento de dados,
+          armazenamento e recuperação ideais, podendo escalar com o crescimento dos volumes de dados.</li>
+        <li>Integração e Compatibilidade: Escolher ferramentas e tecnologias que se integrem perfeitamente previne dores
+          de cabeça futuras com integrações e reduz as complexidades do sistema.</li>
+        <li>Custos e Gerenciamento de Recursos: Uma stack tecnológica apropriada pode levar a economias de custos ao
+          utilizar recursos de forma eficiente e evitar transições de plataformas caras no futuro.</li>
+      </ul>
+      <p>Use templates</p>
+      <p>Não perca tempo codificando soluções já prontas para você, como configurar airbyte, airflow, dbt, spark,
+        metabase etc...</p>
+      <p>Isso deve liberar seu tempo para se concentrar nas coisas principais, como escrever dags, sql e criar
+        visualizações</p>
+      <p><a href="https://github.com/lewagon/data-engineering-challenges/tree/main/templates"
+          target="_blank">Templates</a></p>
+
+      <h3 class="section-title">Planeje como estruturar seus dados</h3>
+      <ul>
+        <li>Escalabilidade: A organização inicial adequada garante que a infraestrutura de dados possa lidar com o
+          crescimento sem degradação de desempenho.</li>
+        <li>Qualidade dos Dados: Reduz o risco de inconsistências, duplicações e erros, garantindo a confiabilidade dos
+          dados.</li>
+        <li>Eficiência: Simplifica a recuperação e o processamento de dados, levando a insights e tomada de decisões
+          mais rápidos.</li>
+      </ul>
+
+      <h3 class="section-title display-6 mb-4">Leitura adicional 📚</h3>
+      <div class="row">
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Documentação do Terraform</h5>
+              <p class="card-text">Explore a documentação oficial do Terraform para aprofundar seus conhecimentos.</p>
+              <a href="https://developer.hashicorp.com/terraform/docs" target="_blank" class="btn btn-primary">Acessar
+                documentação</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Configurando GitOps</h5>
+              <p class="card-text">Aprenda a configurar GitOps para gerenciar sua infraestrutura como código de forma
+                eficiente.</p>
+              <a href="https://cloud.google.com/docs/terraform/resource-management/managing-infrastructure-as-code"
+                target="_blank" class="btn btn-primary">Ver guia</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Curso de Ansible</h5>
+              <p class="card-text">Domine o Ansible com este curso abrangente e obtenha certificação.</p>
+              <a href="https://www.ansible.com/products/training-certification" target="_blank"
+                class="btn btn-primary">Ver
+                curso</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">Vídeo introdutório sobre Ansible</h5>
+              <p class="card-text">Assista a um vídeo introdutório para começar sua jornada com o Ansible.</p>
+              <a href="https://www.youtube.com/watch?v=1id6ERvfozo" target="_blank" class="btn btn-primary">Assistir
+                vídeo</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
