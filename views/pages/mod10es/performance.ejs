@@ -40,7 +40,7 @@
 </style>
 
 <div id="qrcode-container" class="mt-5">
-  <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1717127497/Captura_de_tela_2024-05-31_035154_esxhen.png"
+  <img src="https://res.cloudinary.com/dyhjjms8y/image/upload/v1717257486/Captura_de_tela_2024-06-01_155812_npehrw.png"
     alt="QR Code">
 </div>
 
@@ -131,6 +131,75 @@
     </table>
   </div>
 </section>
+
+<section class="container py-5" id="performance-codigo">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <div class="card bg-dark text-white mb-4">
+        <div class="card-header">
+          <h2 class="card-title">
+            <i class="fas fa-stopwatch text-danger"></i> Performance de Código: A Busca pelo Limite
+          </h2>
+        </div>
+        <div class="card-body">
+          <p class="card-text lead">
+            Atingir o máximo de performance em código exige um mergulho profundo nos mecanismos internos da linguagem de
+            programação. Pequenas otimizações podem fazer uma grande diferença, especialmente em operações repetidas
+            milhões de vezes.
+          </p>
+        </div>
+      </div>
+
+      <div class="card bg-light text-black mb-4">
+        <div class="card-header">
+          <h3 class="card-title">Exemplo: Par ou Ímpar?</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Uma maneira comum de verificar se um número é par ou ímpar é usar o operador módulo (%). No entanto, existe
+            uma alternativa mais rápida: o operador bit a bit AND (&) combinado com o número 1.
+          </p>
+
+          <pre class="line-numbers"><code class="language-python">
+def eh_par_modulo(numero):
+  return numero % 2 == 0
+
+def eh_par_bitwise(numero):
+  return (numero & 1) == 0
+          </code></pre>
+
+          <p class="card-text">
+            Em Python, a segunda função (<code style="color: blue;">eh_par_bitwise</code>) tende a ser mais rápida. Isso porque o operador &
+            1 realiza uma operação bit a bit, verificando apenas o último bit do número em sua representação binária. Se
+            o último bit for 0, o número é par; se for 1, é ímpar. Essa operação é mais simples e direta do que o
+            cálculo do módulo.
+          </p>
+        </div>
+      </div>
+
+      <div class="card bg-dark text-white">
+        <div class="card-header">
+          <h3 class="card-title">Indo Além da Performance</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-text">
+            Embora a otimização seja importante, é crucial equilibrar performance com legibilidade e manutenibilidade do
+            código. Em muitos casos, a diferença de velocidade entre duas abordagens pode ser insignificante. Priorize a
+            clareza do código, a menos que o desempenho seja um fator crítico na sua aplicação.
+          </p>
+
+          <p class="card-text text-center">
+            Lembre-se: o conhecimento profundo da linguagem é a chave para desbloquear todo o potencial de performance
+            do seu código!
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
 <section class="container py-5" id="telemetria-vs-logs">
   <div class="row justify-content-center">
