@@ -41,86 +41,97 @@
       height: 80px;
     }
   }
+
   /* Estilos personalizados */
-.timeline {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+  .timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-.timeline::after {
-  content: '';
-  position: absolute;
-  width: 6px;
-  background-color: #007bff; /* Cor azul primária do Bootstrap */
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -3px;
-  z-index: -1; /* Coloca a linha atrás dos itens da timeline */
-}
-
-.timeline-item {
-  padding: 20px 40px;
-  background-color: #f8f9fa; /* Cor de fundo clara do Bootstrap */
-  position: relative;
-  border-radius: 6px;
-  margin-bottom: 20px;
-}
-
-.timeline-item::after {
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  right: -12px;
-  background-color: white;
-  border: 4px solid #007bff;
-  top: 16px;
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.timeline-item h3 {
-  margin-top: 0;
-  color: #007bff;
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 768px) {
   .timeline::after {
-    left: 31px; /* Alinha a linha com o ícone em telas menores */
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #007bff;
+    /* Cor azul primária do Bootstrap */
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    z-index: -1;
+    /* Coloca a linha atrás dos itens da timeline */
+  }
+
+  .timeline-item {
+    padding: 20px 40px;
+    background-color: #f8f9fa;
+    /* Cor de fundo clara do Bootstrap */
+    position: relative;
+    border-radius: 6px;
+    margin-bottom: 20px;
   }
 
   .timeline-item::after {
-    left: -16px;
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -12px;
+    background-color: white;
+    border: 4px solid #007bff;
+    top: 16px;
+    border-radius: 50%;
+    z-index: 1;
   }
-}
-/* Estilos personalizados */
-.feature-box {
-  text-align: center;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil */
-  transition: transform 0.3s ease; /* Efeito de hover */
-}
 
-.feature-box:hover {
-  transform: translateY(-5px); /* Eleva a caixa ao passar o mouse */
-}
+  .timeline-item h3 {
+    margin-top: 0;
+    color: #007bff;
+  }
 
-.feature-box i {
-  font-size: 36px;
-  color: #007bff; /* Cor azul primária do Bootstrap */
-  margin-bottom: 20px;
-}
+  /* Responsividade para telas menores */
+  @media (max-width: 768px) {
+    .timeline::after {
+      left: 31px;
+      /* Alinha a linha com o ícone em telas menores */
+    }
 
-/* Responsividade para telas menores */
-@media (max-width: 768px) {
+    .timeline-item::after {
+      left: -16px;
+    }
+  }
+
+  /* Estilos personalizados */
   .feature-box {
-    margin-bottom: 20px; /* Espaçamento entre as caixas em telas menores */
+    text-align: center;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+    transition: transform 0.3s ease;
+    /* Efeito de hover */
   }
-}
+
+  .feature-box:hover {
+    transform: translateY(-5px);
+    /* Eleva a caixa ao passar o mouse */
+  }
+
+  .feature-box i {
+    font-size: 36px;
+    color: #007bff;
+    /* Cor azul primária do Bootstrap */
+    margin-bottom: 20px;
+  }
+
+  /* Responsividade para telas menores */
+  @media (max-width: 768px) {
+    .feature-box {
+      margin-bottom: 20px;
+      /* Espaçamento entre as caixas em telas menores */
+    }
+  }
 </style>
 
 <div id="qrcode-container" class="mt-5">
@@ -161,8 +172,8 @@
       <tbody>
         <tr>
           <td>
-            <a href="https://integrada.minhabiblioteca.com.br/reader/books/9786558040118/"
-              target="_blank" class="btn btn-link text-decoration-none text-dark fw-bold">
+            <a href="https://integrada.minhabiblioteca.com.br/reader/books/9786558040118/" target="_blank"
+              class="btn btn-link text-decoration-none text-dark fw-bold">
               <i class="fa-solid fa-ranking-star"></i> Qualidade de Software
             </a>
           </td>
@@ -202,8 +213,8 @@
         </tr>
         <tr>
           <td>
-            <a href="https://www.devmedia.com.br/teste-unitario-com-jest/41234"
-              target="_blank" class="btn btn-link text-decoration-none text-dark fw-bold">
+            <a href="https://www.devmedia.com.br/teste-unitario-com-jest/41234" target="_blank"
+              class="btn btn-link text-decoration-none text-dark fw-bold">
               <i class="fa-solid fa-vials"></i> Teste unitário com Jest
             </a>
           </td>
@@ -391,7 +402,8 @@
           <p class="card-text">Os testes unitários são executados em um ambiente isolado, onde cada unidade de código é
             testada individualmente. O processo envolve:</p>
           <ol class="card-text">
-            <li>**Isolamento da unidade:** A função, método ou classe a ser testada é separada do restante do código.</li>
+            <li>**Isolamento da unidade:** A função, método ou classe a ser testada é separada do restante do código.
+            </li>
             <li>**Criação de casos de teste:** São definidos cenários de entrada (dados) e os resultados esperados para
               cada cenário.</li>
             <li>**Execução dos testes:** Os testes são executados automaticamente, comparando os resultados reais com os
@@ -545,7 +557,8 @@ describe('Calculadora', () => {
       <div class="card h-100 shadow-sm">
         <div class="card-body d-flex flex-column">
           <h3 class="card-title text-center"><i class="bi bi-lightning-fill display-4 text-warning"></i> Jest</h3>
-          <p class="card-text flex-grow-1">Completo e fácil de usar, criado pelo Facebook. Perfeito para projetos React e
+          <p class="card-text flex-grow-1">Completo e fácil de usar, criado pelo Facebook. Perfeito para projetos React
+            e
             para quem busca uma solução rápida e eficiente.</p>
           <ul class="list-group list-group-flush">
             <li class="list-group-item">Execução em paralelo</li>
@@ -693,7 +706,7 @@ describe('PetsController', () => {
     JavaScript.</p>
 
   <div class="ratio ratio-16x9">
-    <iframe src="https://www.youtube.com/embed/J635mqk769k?si=2XyAL2jfczaMKIxC" title="YouTube video"
+    <iframe src="https://www.youtube.com/embed/Z4ibU-vnbkw?si=J9zWpnsnu39h6juI" title="YouTube video"
       allowfullscreen></iframe>
   </div>
 </section>
