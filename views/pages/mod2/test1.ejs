@@ -602,7 +602,11 @@ describe('Calculadora', () => {
       <ol class="list-group list-group-numbered">
         <li class="list-group-item">
           <strong>Instalando as Ferramentas:</strong>
-          <pre><code>npm install mocha sinon supertest --save-dev</code></pre>
+          <pre><code>npm install mocha sinon assert supertest --save-dev</code></pre>
+        </li>
+        <li class="list-group-item">
+          <strong>Adicione no package.json o seguinte script de teste:</strong>
+          <pre><code>"test": "node ./node_modules/mocha/bin/mocha tests/lifecycle.test.js tests/unitary/**/*.test.js",</code></pre>
         </li>
         <li class="list-group-item">
           <strong>Organizando os Testes:</strong>
