@@ -257,191 +257,6 @@ def eh_par_bitwise(numero):
   </div>
 </section>
 
-<section class="container py-5" id="exemplos-logs">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <h2 class="text-center display-5 mb-4">
-        <i class="fas fa-code me-2 text-info"></i> Exemplos de Envio de Logs de Negócio
-      </h2>
-
-      <p class="lead text-center">
-        Veja como enviar logs de negócio para o InfluxDB usando Python e NestJS:
-      </p>
-
-      <div class="card mb-4">
-        <div class="card-header bg-info text-white">
-          Python
-        </div>
-        <div class="card-body">
-          <pre class="bg-light p-3 rounded"><code>
-from influxdb_client import InfluxDBClient, Point
-from influxdb_client.client.write_api import SYNCHRONOUS
-import os
-
-# Configuração do InfluxDB (substitua pelos seus dados)
-url = os.getenv('INFLUXDB_URL')
-token = os.getenv('INFLUXDB_TOKEN')
-org = os.getenv('INFLUXDB_ORG')
-bucket = os.getenv('INFLUXDB_BUCKET')
-
-client = InfluxDBClient(url=url, token=token, org=org)
-write_api = client.write_api(write_options=SYNCHRONOUS)
-
-point = Point("login_events").tag("user", "john_doe").field("success", True)
-write_api.write(bucket=bucket, org=org, record=point)
-                    </code></pre>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header bg-success text-white">
-          NestJS
-        </div>
-        <div class="card-body">
-          <pre class="bg-light p-3 rounded"><code>
-import { Injectable } from '@nestjs/common';
-import { InfluxDB, Point } from '@influxdata/influxdb-client';
-import * as dotenv from 'dotenv';
-
-dotenv.config();
-
-@Injectable()
-export class LoggingService {
-  private readonly influxDB: InfluxDB;
-
-  constructor() {
-    this.influxDB = new InfluxDB({
-      url: process.env.INFLUXDB_URL,
-      token: process.env.INFLUXDB_TOKEN,
-    });
-  }
-
-  async logEvent(event: string, data: any = {}) {
-    const writeApi = this.influxDB.getWriteApi(process.env.INFLUXDB_ORG, process.env.INFLUXDB_BUCKET);
-    const point = new Point(event).tag('source', 'backend').fields(data);
-    writeApi.writePoint(point);
-    await writeApi.close();
-  }
-}
-                    </code></pre>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="container py-5" id="influxdb-docker">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <h2 class="text-center display-5 mb-4">
-        <i class="fab fa-docker me-2 text-primary"></i> InfluxDB com Docker: Rápido e Fácil
-      </h2>
-
-      <p class="lead text-center">
-        Inicie rapidamente uma instância do InfluxDB usando o Docker e explore o exemplo de código em Python para enviar
-        métricas:
-      </p>
-
-      <div class="card mb-4">
-        <div class="card-header bg-primary text-white">
-          Comando Docker
-        </div>
-        <div class="card-body">
-          <pre class="bg-light p-3 rounded"><code>
-docker run -d -p 8086:8086 --name my-influxdb influxdb:latest
-                    </code></pre>
-          <p class="card-text">Este comando baixa e executa um container Docker com o InfluxDB na porta 8086. Substitua
-            os valores de `admin` e `admin` por suas credenciais preferidas.</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header bg-success text-white">
-          Código Python (app.py)
-        </div>
-        <div class="card-body">
-          <pre class="bg-light p-3 rounded"><code>
-from flask import Flask
-from prometheus_client import Gauge, start_http_server
-from influxdb_client import InfluxDBClient, Point, WritePrecision
-from influxdb_client.client.write_api import SYNCHRONOUS
-import random
-import time
-from dotenv import load_dotenv
-import os
-
-# Carrega as variáveis de ambiente do arquivo .env
-load_dotenv()
-
-app = Flask(__name__)
-
-# Conexão com o InfluxDB (lendo do .env)
-influx_url = os.getenv('INFLUXDB_URL')
-influx_token = os.getenv('INFLUXDB_TOKEN')
-influx_org = os.getenv('INFLUXDB_ORG')
-influx_bucket = os.getenv('INFLUXDB_BUCKET')
-
-try:
-    client = InfluxDBClient(url=influx_url, token=influx_token, org=influx_org)
-    write_api = client.write_api(write_options=SYNCHRONOUS)
-except Exception as e:
-    print(f"Erro ao conectar ao InfluxDB: {e}")
-    exit(1)  # Encerra o aplicativo se não conseguir conectar ao InfluxDB
-
-# Métricas
-temperature = Gauge('temperature_celsius', 'Temperature in Celsius')
-humidity = Gauge('humidity_percent', 'Humidity in Percentage')
-pressure = Gauge('pressure_hpa', 'Pressure in hPa')
-
-@app.route('/')
-def index():
-    return "Hello, World!"
-
-def generate_metrics():
-    while True:
-        temperature.set(random.uniform(15, 35))
-        humidity.set(random.uniform(40, 80))
-        pressure.set(random.uniform(980, 1030))
-
-        point = Point("metrics").tag("host", "server01").\
-            field("temperature", temperature._value.get()).\
-            field("humidity", humidity._value.get()).\
-            field("pressure", pressure._value.get()).\
-            time(int(time.time_ns()), WritePrecision.NS)
-
-        try:
-            write_api.write(bucket=influx_bucket, org=influx_org, record=point)
-        except Exception as e:
-            print(f"Erro ao escrever no InfluxDB: {e}")
-
-        time.sleep(1)
-
-if __name__ == '__main__':
-    start_http_server(8000)
-    generate_metrics()
-    app.run(host='0.0.0.0', port=5000)
-          </code></pre>
-        </div>
-      </div>
-
-      <div class="card mt-4">
-        <div class="card-header">
-          .env
-        </div>
-        <div class="card-body">
-          <pre class="bg-light p-3 rounded"><code>
-INFLUXDB_URL=http://localhost:8086
-INFLUXDB_TOKEN=
-INFLUXDB_ORG=
-INFLUXDB_BUCKET=
-                    </code></pre>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <section class="container py-5" id="influxdb">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -594,6 +409,162 @@ INFLUXDB_BUCKET=
   </div>
 </section>
 
+<section class="container py-5" id="influxdb-docker">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-center display-5 mb-4">
+        <i class="fab fa-docker me-2 text-primary"></i> InfluxDB e Prometheus com Docker: Rápido e Fácil
+      </h2>
+
+      <p class="lead text-center">
+        Inicie rapidamente uma instância do InfluxD e Prometheus usando o Docker e explore o exemplo de código em Python para enviar
+        métricas:
+      </p>
+
+      <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+          Comando Docker
+        </div>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>
+docker run -d -p 8086:8086 --name my-influxdb influxdb:latest
+docker run -d -p 9090:9090 --name prometheus -v C:/Users/Intelii/source/repos/aulatal/prometheus.yml:/etc/prometheus/prometheus.yml prom/prometheus
+                    </code></pre>
+          <p class="card-text">Este comando baixa e executa um container Docker com o InfluxDB na porta 8086. Substitua
+            os valores de `admin` e `admin` por suas credenciais preferidas.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header bg-success text-white">
+          Código Python (app.py)
+        </div>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>
+            from flask import Flask
+            from prometheus_client import Gauge, start_http_server
+            from influxdb_client import InfluxDBClient, Point, WritePrecision
+            from influxdb_client.client.write_api import SYNCHRONOUS
+            import random
+            import time
+            from dotenv import load_dotenv
+            import os
+            from threading import Thread
+            
+            # Carrega as variáveis de ambiente do arquivo .env
+            load_dotenv()
+            
+            app = Flask(__name__)
+            
+            # Conexão com o InfluxDB (lendo do .env)
+            influx_url = os.getenv('INFLUXDB_URL')
+            influx_token = os.getenv('INFLUXDB_TOKEN')
+            influx_org = os.getenv('INFLUXDB_ORG')
+            influx_bucket = os.getenv('INFLUXDB_BUCKET')
+            
+            try:
+                client = InfluxDBClient(url=influx_url, token=influx_token, org=influx_org)
+                write_api = client.write_api(write_options=SYNCHRONOUS)
+            except Exception as e:
+                print(f"Erro ao conectar ao InfluxDB: {e}")
+                exit(1)  # Encerra o aplicativo se não conseguir conectar ao InfluxDB
+            
+            # Métricas
+            temperature = Gauge('temperature_celsius', 'Temperature in Celsius')
+            humidity = Gauge('humidity_percent', 'Humidity in Percentage')
+            pressure = Gauge('pressure_hpa', 'Pressure in hPa')
+            
+            @app.route('/')
+            def index():
+                return "Hello, World!"
+            
+            def generate_metrics():
+                while True:
+                    temp_value = random.uniform(15, 35)
+                    humidity_value = random.uniform(40, 80)
+                    pressure_value = random.uniform(980, 1030)
+            
+                    temperature.set(temp_value)
+                    humidity.set(humidity_value)
+                    pressure.set(pressure_value)
+            
+                    print(f"Metrics updated - Temperature: {temp_value}°C, Humidity: {humidity_value}%, Pressure: {pressure_value}hPa")
+            
+                    point = Point("metrics").tag("host", "server01").\
+                        field("temperature", temp_value).\
+                        field("humidity", humidity_value).\
+                        field("pressure", pressure_value).\
+                        time(int(time.time_ns()), WritePrecision.NS)
+            
+                    try:
+                        write_api.write(bucket=influx_bucket, org=influx_org, record=point)
+                        print(f"Metrics sent to InfluxDB - Temperature: {temp_value}°C, Humidity: {humidity_value}%, Pressure: {pressure_value}hPa")
+                    except Exception as e:
+                        print(f"Erro ao escrever no InfluxDB: {e}")
+            
+                    time.sleep(1)
+            
+            if __name__ == '__main__':
+                start_http_server(8000)  # Inicia o servidor de métricas Prometheus na porta 8000
+                print("Prometheus metrics server started on port 8000")
+                
+                metrics_thread = Thread(target=generate_metrics)
+                metrics_thread.start()
+                app.run(host='0.0.0.0', port=5000)
+                print("Flask server started on port 5000")
+            
+          </code></pre>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-header">
+          .env
+        </div>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>
+INFLUXDB_URL=http://localhost:8086
+INFLUXDB_TOKEN=
+INFLUXDB_ORG=
+INFLUXDB_BUCKET=
+                    </code></pre>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-header">
+          prometheus.yml
+        </div>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>
+            global:
+            scrape_interval: 15s  # Intervalo de coleta de métricas
+          
+          scrape_configs:
+            - job_name: 'flask_app'
+              static_configs:
+                - targets: ['host.docker.internal:8000']
+          </code></pre>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-header">
+          requirements.txt
+        </div>
+        <div class="card-body">
+          <pre class="bg-light p-3 rounded"><code>
+            Flask
+            prometheus_client
+            influxdb-client
+            python-dotenv
+          </code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="container py-5" id="tbl-atividade">
   <div class="row justify-content-center">
     <div class="col-md-8">
@@ -611,7 +582,7 @@ INFLUXDB_BUCKET=
         <div class="card-body">
           <h5 class="card-title">Desafio TBL:</h5>
           <p class="card-text">
-            Seu time receberá um repositório base para o projeto. Utilizando os conceitos de métricas, logs e as
+            Seu time deverá aplicar ao seu projeto. Utilizando os conceitos de métricas, logs e as
             ferramentas apresentadas (InfluxDB, Prometheus, Grafana, OpenTelemetry), vocês deverão:
           </p>
           <ol>
@@ -690,7 +661,6 @@ INFLUXDB_BUCKET=
     </div>
   </div>
 </section>
-
 
 <section class="container py-5" id="autoestudo-ponderado">
   <div class="row justify-content-center">
