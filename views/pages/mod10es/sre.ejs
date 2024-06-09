@@ -123,6 +123,18 @@
   </div>
 </section>
 
+<section class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="d-flex justify-content-around">
+        <a href="https://github.com/render-examples/django" class="btn btn-primary btn-lg mx-2" target="_blank">
+          <i class="fab fa-github"></i> Repositório GitHub - Django com Render
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="container py-5" id="esquenta-kahoot">
   <div class="row justify-content-center">
     <div class="col-md-8 text-center">
@@ -264,212 +276,255 @@
   </div>
 </section>
 
-<section class="container py-5">
+<section class="container py-5 mb-5" id="tutorial">
   <div class="row justify-content-center">
     <div class="col-md-8">
-      <h2 class="text-center display-4 mb-4">Render: Implante seus projetos com facilidade</h2>
-      <p class="lead text-center">Plataforma de hospedagem em nuvem para aplicativos web, APIs, sites estáticos e muito
-        mais.</p>
-
-      <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title d-flex align-items-center"><i class="fab fa-node-js me-2"></i>Node.js</h5>
-              <pre><code class="language-yaml">
-services:
-  - type: web
-    name: meu-app-node
-    env: node
-    buildCommand: npm install
-    startCommand: npm start
-    envVars:
-      - key: PORT
-        value: 3000
-    domains:
-      - www.meu-app-node.com
-                            </code></pre>
-            </div>
-          </div>
+      <div class="card text-center border-info shadow">
+        <div class="card-header bg-info text-white">
+          <i class="fas fa-book me-2"></i> Tutorial de Instalação e Configuração do Minikube no Ubuntu
         </div>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title d-flex align-items-center"><i class="fab fa-python me-2"></i>Python</h5>
-              <pre><code class="language-yaml">
-services:
-  - type: web
-    name: meu-app-python
-    env: python
-    buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
-    envVars:
-      - key: PORT
-        value: 8000
-    domains:
-      - www.meu-app-python.com
-                            </code></pre>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        <div class="card-body text-start">
+          <h5 class="card-title">Passo 1: Instalar Dependências</h5>
+          <p class="card-text">
+            Primeiro, instale as dependências necessárias para rodar o Minikube:
+          <pre><code>sudo apt-get update
+sudo apt-get install -y curl apt-transport-https docker.io</code></pre>
+          </p>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+          <h5 class="card-title">Passo 2: Instalar o Minikube</h5>
+          <p class="card-text">
+            Baixe e instale o Minikube:
+          <pre><code>curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube</code></pre>
+          </p>
 
-<section class="container py-5">
-  <div class="row">
-    <div class="col">
-      <div class="page-header">
-        <h1>Instalando e Testando Kubernetes com um Projeto Python</h1>
-      </div>
+          <h5 class="card-title">Passo 3: Iniciar o Minikube</h5>
+          <p class="card-text">
+            Inicie o Minikube:
+          <pre><code>minikube start --driver=docker</code></pre>
+          </p>
 
-      <div class="accordion-body text-center">
-        <p>Siga o tutorial abaixo para instalar e testar o Kubernetes com um projeto Python simples. O tutorial também cobre como definir a escalabilidade para lidar com alta demanda, adicionando mais pods conforme necessário.</p>
-        <a class="btn btn-secondary" href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank">Tutorial Completo</a>
-      </div>
+          <h5 class="card-title">Passo 4: Instalar o Kubectl</h5>
+          <p class="card-text">
+            Instale o Kubectl, a ferramenta de linha de comando do Kubernetes:
+          <pre><code>sudo apt-get install -y kubectl</code></pre>
+          </p>
 
-      <div class="text-center">
-        <img src="https://images.ctfassets.net/w1bd7cq683kz/5Ex6830HzBPU5h8Ou8xQAB/2c948105fc10094348203bec6c1eab04/Kubernetes_20architecture_20diagram.png" alt="Kubernetes Architecture" class="img-fluid mb-4">
-      </div>
+          <h5 class="card-title">Passo 5: Criar Aplicação Flask</h5>
+          <p class="card-text">
+            Crie uma aplicação Flask simples. Crie um diretório para o projeto e um arquivo <code>app.py</code>:
+          <pre><code>mkdir flask-app
+cd flask-app
+nano app.py</code></pre>
+          Adicione o seguinte conteúdo ao <code>app.py</code>:
+          <pre><code>from flask import Flask
 
-      <h2 class="section-title">1. Instalando o Kubernetes</h2>
-      <p>Para instalar o Kubernetes em sua máquina local, siga os passos abaixo:</p>
-      <ol class="list-group mb-4">
-        <li class="list-group-item">Instale o Minikube, que é uma ferramenta que permite rodar um cluster Kubernetes local. Você pode encontrar as instruções de instalação <a href="https://minikube.sigs.k8s.io/docs/start/" target="_blank">aqui</a>.</li>
-        <li class="list-group-item">Instale o kubectl, que é a interface de linha de comando para o Kubernetes. As instruções de instalação estão disponíveis <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl/" target="_blank">aqui</a>.</li>
-        <li class="list-group-item">Inicie o Minikube:
-          <pre><code>minikube start</code></pre>
-        </li>
-      </ol>
-
-      <h2 class="section-title">2. Configurando o Projeto Python</h2>
-      <p>Crie um simples projeto Python. Aqui está um exemplo de um servidor Flask básico:</p>
-      <pre><code>
-# app.py
-from flask import Flask
 app = Flask(__name__)
 
 @app.route('/')
-def hello_world():
-    return 'Hello, Kubernetes!'
+def hello():
+    return "Hello, World!"
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
-      </code></pre>
+    app.run(host='0.0.0.0', port=5000)</code></pre>
+          Crie um arquivo <code>requirements.txt</code>:
+          <pre><code>nano requirements.txt</code></pre>
+          Adicione o seguinte conteúdo:
+          <pre><code>Flask==2.1.1</code></pre>
+          </p>
 
-      <h3 class="section-title">Criando um Dockerfile</h3>
-      <p>Crie um arquivo chamado <code>Dockerfile</code> para construir uma imagem Docker do seu aplicativo:</p>
-      <pre><code>
-# Dockerfile
-FROM python:3.8-slim
+          <h5 class="card-title">Passo 6: Criar Dockerfile</h5>
+          <p class="card-text">
+            Crie um arquivo <code>Dockerfile</code> com o seguinte conteúdo:
+          <pre><code>FROM python:3.9-slim
 
 WORKDIR /app
+
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
+
 COPY . .
 
-CMD ["python", "app.py"]
-      </code></pre>
-      <p>Certifique-se de ter um arquivo <code>requirements.txt</code> com as dependências do Flask:</p>
-      <pre><code>flask</code></pre>
+CMD ["python", "app.py"]</code></pre>
+          </p>
 
-      <h2 class="section-title">3. Construindo e Implantando no Kubernetes</h2>
-      <p>Construa a imagem Docker localmente e use o Minikube para gerenciá-la:</p>
-      <pre><code>
-# Construa a imagem Docker
-& minikube -p minikube docker-env --shell powershell | Invoke-Expression
-docker build -t flask-k8s:latest .
-      </code></pre>
+          <h5 class="card-title">Passo 7: Construir e Enviar a Imagem Docker</h5>
+          <p class="card-text">
+            Construa a imagem Docker:
+          <pre><code>eval $(minikube docker-env)
+docker build -t flask-app:latest .</code></pre>
+          </p>
 
-      <h3 class="section-title">Criando os Manifests do Kubernetes</h3>
-      <p>Crie um arquivo chamado <code>deployment.yaml</code> para definir o Deployment e o Service no Kubernetes:</p>
-      <pre><code>
-apiVersion: apps/v1
+          <h5 class="card-title">Passo 8: Criar Manifests do Kubernetes</h5>
+          <p class="card-text">
+            Crie um arquivo <code>deployment.yaml</code>:
+          <pre><code>nano deployment.yaml</code></pre>
+          Adicione o seguinte conteúdo:
+          <pre><code>apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: flask-deployment
+  name: flask-app
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: flask
+      app: flask-app
   template:
     metadata:
       labels:
-        app: flask
+        app: flask-app
     spec:
       containers:
-      - name: flask
-        image: flask-k8s:latest
+      - name: flask-app
+        image: flask-app:latest
+        imagePullPolicy: Never
         ports:
-        - containerPort: 80
-
----
-apiVersion: v1
+        - containerPort: 5000</code></pre>
+          Crie um arquivo <code>service.yaml</code>:
+          <pre><code>nano service.yaml</code></pre>
+          Adicione o seguinte conteúdo:
+          <pre><code>apiVersion: v1
 kind: Service
 metadata:
-  name: flask-service
+  name: flask-app
 spec:
-  selector:
-    app: flask
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
   type: NodePort
-      </code></pre>
+  selector:
+    app: flask-app
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 5000
+    nodePort: 30007</code></pre>
+          </p>
 
-      <h3 class="section-title">Aplicando os Manifests</h3>
-      <p>Aplicar os manifests ao cluster Kubernetes:</p>
-      <pre><code>kubectl apply -f deployment.yaml</code></pre>
-      
-      <p>Para acessar o serviço, execute:</p>
-      <pre><code>minikube service flask-service</code></pre>
+          <h5 class="card-title">Passo 9: Aplicar Manifests do Kubernetes</h5>
+          <p class="card-text">
+            Aplique os arquivos de configuração:
+          <pre><code>kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml</code></pre>
+          </p>
 
-      <h2 class="section-title">4. Definindo a Escalabilidade</h2>
-      <p>Para escalar o Deployment, você pode usar o comando <code>kubectl scale</code>:</p>
-      <pre><code>kubectl scale deployment flask-deployment --replicas=3</code></pre>
-      <p>Isso aumentará o número de réplicas para 3, distribuindo a carga entre elas.</p>
+          <h5 class="card-title">Passo 10: Verificar os Pods e Serviço</h5>
+          <p class="card-text">
+            Verifique os pods:
+          <pre><code>kubectl get pods</code></pre>
+          Verifique o serviço:
+          <pre><code>kubectl get svc</code></pre>
+          </p>
 
-      <h2 class="section-title">5. Testando a Escalabilidade com Curl</h2>
-      <p>Depois de instalar o Curl, você pode usá-lo para enviar múltiplas requisições ao seu serviço no Kubernetes. Siga os passos abaixo:</p>
-      <ol class="list-group mb-4">
-        <li class="list-group-item">Obtenha o URL do serviço rodando no Minikube:
-          <pre><code>minikube service flask-service --url</code></pre>
-        </li>
-        <li class="list-group-item">Use o Curl para enviar requisições ao serviço:
-          <pre><code>for i in {1..100}; do curl -s $(minikube service flask-service --url); done</code></pre>
-          <ul>
-            <li>Este comando envia 100 requisições consecutivas ao serviço.</li>
-          </ul>
-        </li>
-      </ol>
+          <h5 class="card-title">Passo 11: Obter URL de Acesso</h5>
+          <p class="card-text">
+            Obtenha a URL de acesso:
+          <pre><code>minikube service flask-app --url</code></pre>
+          Abra a URL no navegador para ver a aplicação Flask em execução.
+          </p>
 
-      <h2 class="section-title">Conclusão</h2>
-      <p>Agora você configurou e implantou um projeto Python simples no Kubernetes, configurou a escalabilidade para lidar com alta demanda, e testou a duplicação de pods localmente usando Minikube.</p>
-      <p>Isso é apenas o começo da jornada para se tornar um engenheiro de confiabilidade de sites (SRE). Aqui estão algumas recomendações para continuar seus estudos:</p>
-      <ul class="list-group mb-4">
-        <li class="list-group-item">Aprofunde-se nos fundamentos do Kubernetes e Docker.</li>
-        <li class="list-group-item">Estude práticas de DevOps, como CI/CD (Integração Contínua/Entrega Contínua).</li>
-        <li class="list-group-item">Aprenda sobre monitoramento e observabilidade, utilizando ferramentas como Prometheus e Grafana.</li>
-        <li class="list-group-item">Entenda a importância do gerenciamento de logs com ELK Stack (Elasticsearch, Logstash, Kibana).</li>
-        <li class="list-group-item">Explore a infraestrutura como código (IaC) com Terraform e Ansible.</li>
-        <li class="list-group-item">Estude segurança em cloud e práticas de governança.</li>
-        <li class="list-group-item">Pratique a automação de operações com scripts e pipelines.</li>
-      </ul>
-      <p>Para mais detalhes, consulte o tutorial completo no link abaixo.</p>
-      <div class="accordion-body text-center">
-        <a class="btn btn-secondary" href="https://kubernetes.io/docs/tutorials/kubernetes-basics/" target="_blank">Tutorial Completo</a>
+          <h5 class="card-title">Passo 12: Ver o Minikube Dashboard</h5>
+          <p class="card-text">
+            Inicie o Minikube dashboard:
+          <pre><code>minikube dashboard</code></pre>
+          Acesse a URL fornecida para visualizar o dashboard.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<section class="container py-5 mb-5" id="sre-guide">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card text-center border-success shadow">
+        <div class="card-header bg-success text-white">
+          <i class="fas fa-rocket me-2"></i> Como se Tornar um Excelente SRE
+        </div>
+        <div class="card-body text-start">
+          <h5 class="card-title">Introdução ao SRE</h5>
+          <p class="card-text">
+            Um Site Reliability Engineer (SRE) é responsável por garantir a confiabilidade e disponibilidade dos
+            sistemas em produção. Aqui estão os passos essenciais para se tornar um excelente SRE.
+          </p>
+
+          <h5 class="card-title">1. Compreender os Fundamentos</h5>
+          <p class="card-text">
+            É crucial ter uma forte compreensão dos fundamentos de computação e redes, incluindo sistemas operacionais,
+            redes, protocolos de comunicação e arquitetura de sistemas distribuídos.
+          <ul>
+            <li>Estude conceitos de sistemas operacionais como processos, threads, gerenciamento de memória e sistemas
+              de arquivos.</li>
+            <li>Aprenda sobre redes, incluindo TCP/IP, DNS, HTTP/HTTPS e firewalls.</li>
+          </ul>
+          </p>
+
+          <h5 class="card-title">2. Aprender Programação e Automação</h5>
+          <p class="card-text">
+            A automação é uma parte vital do SRE. Familiarize-se com linguagens de programação como Python, Go, ou Ruby,
+            e ferramentas de automação como Ansible, Puppet, e Chef.
+          <ul>
+            <li>Desenvolva scripts para automatizar tarefas repetitivas.</li>
+            <li>Crie e gerencie pipelines de CI/CD.</li>
+          </ul>
+          </p>
+
+          <h5 class="card-title">3. Conhecer Ferramentas de Monitoramento e Logging</h5>
+          <p class="card-text">
+            Um SRE deve ser proficiente em monitoramento e logging para detectar e solucionar problemas rapidamente.
+          <ul>
+            <li>Aprenda a usar ferramentas como Prometheus, Grafana, ELK Stack (Elasticsearch, Logstash, Kibana), e
+              Splunk.</li>
+            <li>Configure alertas para monitorar a saúde dos sistemas.</li>
+          </ul>
+          </p>
+
+          <h5 class="card-title">4. Dominar Cloud e Contêineres</h5>
+          <p class="card-text">
+            O conhecimento em tecnologias de cloud e contêineres é essencial.
+          <ul>
+            <li>Estude serviços de cloud como AWS, Google Cloud, e Azure.</li>
+            <li>Aprenda a usar contêineres com Docker e orquestração de contêineres com Kubernetes.</li>
+          </ul>
+          </p>
+
+          <h5 class="card-title">5. Praticar Resolução de Problemas e Resiliência</h5>
+          <p class="card-text">
+            Desenvolva habilidades de resolução de problemas e melhore a resiliência dos sistemas.
+          <ul>
+            <li>Realize exercícios de Chaos Engineering para testar a resiliência dos sistemas.</li>
+            <li>Participe de simulações de incidentes para praticar a resposta a incidentes.</li>
+          </ul>
+          </p>
+
+          <h5 class="card-title">6. Focar na Cultura e Comunicação</h5>
+          <p class="card-text">
+            Um excelente SRE deve promover uma cultura de colaboração e comunicação eficaz.
+          <ul>
+            <li>Trabalhe em estreita colaboração com equipes de desenvolvimento e operações.</li>
+            <li>Participe de revisões pós-incidente (Postmortems) para identificar áreas de melhoria.</li>
+          </ul>
+          </p>
+
+          <h5 class="card-title">Recursos Adicionais</h5>
+          <p class="card-text">
+            Para aprofundar seus conhecimentos em DevOps e Segurança da Informação, explore os seguintes recursos:
+          <ul>
+            <li><a href="https://roadmap.sh/devops" target="_blank" class="btn btn-primary my-2"><i
+                  class="fas fa-map-signs me-2"></i>Trilha de DevOps</a></li>
+            <li><a href="https://www.freecodecamp.org/learn/information-security/" target="_blank"
+                class="btn btn-warning my-2"><i class="fas fa-lock me-2"></i>Trilha de Segurança da Informação</a></li>
+          </ul>
+          </p>
+
+          <h5 class="card-title">Conclusão</h5>
+          <p class="card-text">
+            Tornar-se um excelente SRE requer uma combinação de habilidades técnicas e soft skills. Continuar aprendendo
+            e se adaptando às novas tecnologias e práticas é essencial para o sucesso nesta carreira.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="container py-5 mb-5" id="avaliacao">
   <div class="row justify-content-center">
@@ -488,3 +543,7 @@ spec:
     </div>
   </div>
 </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
