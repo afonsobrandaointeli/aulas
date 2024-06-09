@@ -184,13 +184,13 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="d-flex justify-content-around">
-        <a href="https://github.com/afonsobrandaointeli/terraform-demo" class="btn btn-primary btn-lg mx-2"
+        <a href="https://github.com/render-examples/django" class="btn btn-primary btn-lg mx-2"
           target="_blank">
-          <i class="fab fa-github"></i> Repositório GitHub
+          <i class="fab fa-github"></i> Repositório GitHub - Django com Render
         </a>
-        <a href="https://cloud.google.com/docs/terraform/resource-management/managing-infrastructure-as-code?hl=pt-br"
+        <a href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-build"
           class="btn btn-secondary btn-lg mx-2" target="_blank">
-          <i class="fab fa-google"></i> Documentação GCP
+          <i class="fab fa-google"></i> Documentação Terrafmorm/AWS
         </a>
         <a href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli"
           class="btn btn-info btn-lg mx-2" target="_blank">
@@ -205,9 +205,121 @@
   <div class="row">
     <div class="col">
       <div class="page-header">
+        <h1>Passo a Passo para Criar uma Instância EC2 com Terraform</h1>
+      </div>
+
+      <h2 class="section-title">Requisitos Pré-requisitos</h2>
+      <p>Antes de iniciar, certifique-se de que você tem uma conta na AWS Academy: <a href="https://awsacademy.instructure.com/">AWS Academy</a>.</p>
+      <p>Além disso, você pode encontrar um repositório de exemplo para Terraform em: <a href="https://github.com/afonsobrandaointeli/terraform-demo">Repositório de Exemplo Terraform</a>.</p>
+
+      <h2 class="section-title">Instalando o Terraform CLI</h2>
+      <p>Siga os passos abaixo para instalar o Terraform CLI no Windows usando PowerShell:</p>
+      <ol class="list-group mb-4">
+        <li class="list-group-item">Abra o PowerShell como Administrador.</li>
+        <li class="list-group-item">Baixe o Terraform executando o comando:
+          <pre><code>Invoke-WebRequest -Uri https://releases.hashicorp.com/terraform/1.0.11/terraform_1.0.11_windows_amd64.zip -OutFile terraform.zip</code></pre>
+        </li>
+        <li class="list-group-item">Extraia o arquivo ZIP:
+          <pre><code>Expand-Archive -Path terraform.zip -DestinationPath C:\terraform</code></pre>
+        </li>
+        <li class="list-group-item">Adicione o Terraform ao PATH do sistema:
+          <pre><code>[System.Environment]::SetEnvironmentVariable('PATH', $env:PATH + ';C:\terraform', [System.EnvironmentVariableTarget]::Machine)</code></pre>
+        </li>
+        <li class="list-group-item">Verifique a instalação executando:
+          <pre><code>terraform -v</code></pre>
+        </li>
+      </ol>
+
+      <h2 class="section-title">Instalando o AWS CLI</h2>
+      <p>Siga os passos abaixo para instalar o AWS CLI no Windows usando PowerShell:</p>
+      <ol class="list-group mb-4">
+        <li class="list-group-item">Abra o PowerShell como Administrador.</li>
+        <li class="list-group-item">Baixe o instalador do AWS CLI executando:
+          <pre><code>Invoke-WebRequest -Uri https://awscli.amazonaws.com/AWSCLIV2.msi -OutFile AWSCLIV2.msi</code></pre>
+        </li>
+        <li class="list-group-item">Instale o AWS CLI executando:
+          <pre><code>Start-Process msiexec.exe -Wait -ArgumentList '/I AWSCLIV2.msi /quiet'</code></pre>
+        </li>
+        <li class="list-group-item">Verifique a instalação executando:
+          <pre><code>aws --version</code></pre>
+        </li>
+      </ol>
+
+      <h2 class="section-title">Configurando as Credenciais da AWS</h2>
+      <p>Configure suas credenciais da AWS executando o comando:
+        <pre><code>aws configure</code></pre>
+        Forneça suas credenciais de acesso (AWS Access Key ID, AWS Secret Access Key, região padrão e formato de saída).
+      </p>
+      <p>Em seguida, configure o AWS Access Token diretamente no arquivo de credenciais:</p>
+      <ol class="list-group mb-4">
+        <li class="list-group-item">Abra o PowerShell e navegue até o diretório de configuração da AWS:
+          <pre><code>cd ~\.aws\</code></pre>
+        </li>
+        <li class="list-group-item">Abra o arquivo <code>credentials</code> em um editor de texto:
+          <pre><code>notepad credentials</code></pre>
+        </li>
+        <li class="list-group-item">Adicione ou edite a seção com o seguinte conteúdo:
+          <pre><code>
+[default]
+aws_access_key_id = YOUR_ACCESS_KEY_ID
+aws_secret_access_key = YOUR_SECRET_ACCESS_KEY
+aws_session_token = YOUR_SESSION_TOKEN
+          </code></pre>
+        </li>
+      </ol>
+
+      <h2 class="section-title">Criando uma Instância EC2 com Terraform</h2>
+      <p>Crie um arquivo de configuração Terraform chamado <code>main.tf</code> com o seguinte conteúdo:</p>
+      <pre><code>
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c02fb55956c7d316"  # Amazon Linux 2 AMI (HVM), SSD Volume Type
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "TerraformExample"
+  }
+}
+      </code></pre>
+
+      <h3 class="section-title">Inicializando o Terraform</h3>
+      <p>Abra o PowerShell no diretório onde está o arquivo <code>main.tf</code> e execute:</p>
+      <pre><code>terraform init</code></pre>
+
+      <h3 class="section-title">Planejando a Infraestrutura</h3>
+      <p>Para ver o que será criado, execute:</p>
+      <pre><code>terraform plan</code></pre>
+
+      <h3 class="section-title">Aplicando a Configuração</h3>
+      <p>Para criar a instância EC2, execute:</p>
+      <pre><code>terraform apply</code></pre>
+      <p>Digite <code>yes</code> quando solicitado para confirmar a aplicação da configuração.</p>
+
+      <h3 class="section-title">Resolvendo Erros de AMI</h3>
+      <p>Se você encontrar o erro <code>InvalidAMIID.NotFound</code>, significa que o ID da AMI não é válido para a região especificada. Para encontrar uma AMI válida, você pode usar o comando AWS CLI:</p>
+      <pre><code>aws ec2 describe-images --owners amazon --filters "Name=name,Values=amzn2-ami-hvm-2.0.????????-x86_64-gp2"</code></pre>
+      <p>Isso retornará uma lista de AMIs válidas que você pode usar. Substitua o ID da AMI em seu arquivo <code>main.tf</code> por uma das AMIs listadas.</p>
+
+      <h3 class="section-title">Limpando a Infraestrutura</h3>
+      <p>Para destruir a instância criada, execute:</p>
+      <pre><code>terraform destroy</code></pre>
+      <p>Digite <code>yes</code> quando solicitado para confirmar a destruição da infraestrutura.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="container py-5">
+  <div class="row">
+    <div class="col">
+      <div class="page-header">
         <h1>Infraestrutura como Código e Projetos</h1>
       </div>
-      <p class="lead">Plano de aula</p>
 
       <h2 class="section-title">O que é infraestrutura como código</h2>
       <p>Que problemas você encontrou ao criar recursos na nuvem até agora? ❓</p>
@@ -263,409 +375,6 @@
           mudanças na infraestrutura e ajuda a prevenir a divergência de configuração (crítico para trabalho em equipe).
         </li>
       </ul>
-
-      <h3 class="section-title">Terraform suporta JSON, mas é projetado para usar HCL (HashiCorp Configuration Language)
-      </h3>
-      <div class="code-block mb-4">
-        <pre><code class="language-json">
-JSON
-{
-  "resource": {
-    "google_compute_instance": {
-      "example": {
-        "name": "my-instance",
-        "machine_type": "n1-standard-1",
-        "zone": "us-central1-a"
-      }
-    }
-  }
-}
-        </code></pre>
-      </div>
-
-      <div class="code-block mb-4">
-        <pre><code class="language-hcl">
-HCL
-resource "google_compute_instance" "example" {
-  name         = "my-instance"
-  machine_type = "n1-standard-1"
-  zone         = "us-central1-a"
-}
-        </code></pre>
-      </div>
-
-      <h3 class="section-title">Vamos configurar cinco bancadas de trabalho com Debian!</h3>
-      <p>1️⃣ Autentique no gcloud para que o TF tenha permissão para criar recursos</p>
-      <div class="code-block mb-4">
-        <pre><code class="language-bash">
-gcloud auth application-default login
-        </code></pre>
-      </div>
-
-      <p>2️⃣ Defina seu provedor, informando ao terraform que queremos usar o google e quais projetos criar os recursos!
-      </p>
-      <div class="code-block mb-4">
-        <pre><code class="language-hcl">
-provider.tf
-provider "google" {
-  project = "your-project"
-}
-        </code></pre>
-      </div>
-
-      <p>3️⃣ Defina a criação de uma instância de computação</p>
-      <div class="code-block mb-4">
-        <pre><code class="language-hcl">
-main.tf
-resource "google_compute_instance" "my-instance" {
-  name         = "lecture-instance"
-  machine_type = "e2-medium"
-  zone         = "europe-west1-a"
-
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-11"
-    }
-  }
-
-  network_interface {
-    network = "default"
-    access_config {
-    }
-  }
-}
-        </code></pre>
-      </div>
-
-      <p>4️⃣ Aplique os arquivos</p>
-      <div class="code-block mb-4">
-        <pre><code class="language-bash">
-terraform init
-terraform plan
-terraform apply
-        </code></pre>
-      </div>
-
-      <p>5️⃣ Vamos agora criar 5 instâncias 🚀</p>
-      <div class="code-block mb-4">
-        <pre><code class="language-hcl">
-main.tf
-resource "google_compute_instance" "my-instance" {
-  name         = "lecture-instance-${count.index}"
-  machine_type = "e2-medium"
-  zone         = "europe-west1-b"
-  count        = 5
-
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-11"
-    }
-  }
-
-  network_interface {
-    network = "default"
-    access_config {
-    }
-  }
-}
-        </code></pre>
-      </div>
-
-      <p>6️⃣ Também podemos tornar o número dinâmico</p>
-      <div class="code-block mb-4">
-        <pre><code class="language-hcl">
-variable.tf
-variable "machine_count" {
-  description = "Número de instâncias a criar"
-  type        = number
-  default     = 5
-}
-main.tf
-count = var.machine_count
-        </code></pre>
-      </div>
-
-      <h3 class="section-title">Agora que temos uma maneira de criar dinamicamente quantas máquinas precisamos, vamos
-        ver alguns conceitos que podem nos ajudar a estender o terraform</h3>
-
-      <h2 class="section-title">Avançando</h2>
-      <h3 class="section-title">Estado remoto</h3>
-      <p>No momento, o estado é armazenado localmente, então se você compartilhar o código via git e seu colega executar
-        terraform apply, teremos várias cópias dos recursos. Em vez disso, queremos configurá-lo para que o estado seja
-        armazenado remotamente em um bucket para que todos em nossa equipe tenham acesso ao estado atual dos recursos!
-      </p>
-      <div class="code-block mb-4">
-        <pre><code class="language-hcl">
-terraform {
-  backend "gcs" {
-    bucket = "your-state-bucket"
-  }
-}
-        </code></pre>
-      </div>
-
-      <h3 class="section-title">Módulos</h3>
-      <p>Queremos poder reutilizar o código para evitar repetir a nós mesmos! Módulos nos permitem reutilizar
-        rapidamente o código do terraform e usar diferentes variáveis cada vez</p>
-      <div class="code-block mb-4">
-        <pre><code class="language-hcl">
-module "machines" {
-  source        = "path/to/module"
-  machine_count = 7
-}
-        </code></pre>
-      </div>
-
-      <h3 class="section-title">Workspaces</h3>
-      <p>Você frequentemente deseja tanto um ambiente de teste quanto um de produção, você tem duas opções:</p>
-      <ul>
-        <li>Criar duas pastas, uma para desenvolvimento e outra para produção, cada uma com seus próprios arquivos</li>
-        <li>Usar workspaces (https://developer.hashicorp.com/terraform/language/state/workspaces)</li>
-      </ul>
-      <p>No código</p>
-      <div class="code-block mb-4">
-        <pre><code class="language-hcl">
-count = "${terraform.workspace == "production" ? 5 : 1}"
-        </code></pre>
-      </div>
-      <p>Alternando com a CLI</p>
-      <div class="code-block mb-4">
-        <pre><code class="language-bash">
-terraform workspace new production
-terraform workspace select production
-        </code></pre>
-      </div>
-
-      <h3 class="section-title">Terragrunt</h3>
-      <p>O Terraform cria muitos boilerplates mesmo quando otimizado usando módulos etc... O Terragrunt resolve muitos
-        desses problemas e automatiza a criação de boilerplates</p>
-      <p>❗️ Aviso: não importa o que, escrever infraestrutura como código gerará uma grande base de código</p>
-
-      <h3 class="section-title">Ansible</h3>
-
-      <h2 class="section-title">Organização de Projetos</h2>
-      <h3 class="section-title">Comece com um repositório</h3>
-      <ul>
-        <li>Controle de Versão: Rastreie de forma eficiente as mudanças nos pipelines de dados, scripts e configurações,
-          permitindo fácil reversão e colaboração.</li>
-        <li>Colaboração: Simplifique o desenvolvimento em equipe por meio de recursos como pull requests, issues e
-          revisões de código.</li>
-        <li>Integração: Integração perfeita com ferramentas CI/CD e plataformas de dados para testes e implantação
-          automáticos de fluxos de trabalho de engenharia de dados.</li>
-      </ul>
-      <h3 class="section-title">Comandos</h3>
-      <div class="code-block mb-4">
-        <pre><code class="language-bash">
-poetry new lewagon-project
-git init
-gh repo create --private --source=.
-        </code></pre>
-      </div>
-      <p>Em seguida, adicione colaboradores!</p>
-      <p>Não se esqueça de utilizar ações do GitHub para manter o projeto bem organizado e limpo!</p>
-      <p>📚 Excelente cheat sheet do Git: <a href="https://education.github.com/git-cheat-sheet-education.pdf"
-          target="_blank">Git Cheat Sheet</a></p>
-
-      <h3 class="section-title">Escolha sua stack</h3>
-      <ul>
-        <li>Eficiência e Escalabilidade: Escolher a stack tecnológica certa garante processamento de dados,
-          armazenamento e recuperação ideais, podendo escalar com o crescimento dos volumes de dados.</li>
-        <li>Integração e Compatibilidade: Escolher ferramentas e tecnologias que se integrem perfeitamente previne dores
-          de cabeça futuras com integrações e reduz as complexidades do sistema.</li>
-        <li>Custos e Gerenciamento de Recursos: Uma stack tecnológica apropriada pode levar a economias de custos ao
-          utilizar recursos de forma eficiente e evitar transições de plataformas caras no futuro.</li>
-      </ul>
-      <p>Use templates</p>
-      <p>Não perca tempo codificando soluções já prontas para você, como configurar airbyte, airflow, dbt, spark,
-        metabase etc...</p>
-      <p>Isso deve liberar seu tempo para se concentrar nas coisas principais, como escrever dags, sql e criar
-        visualizações</p>
-      <p><a href="https://github.com/lewagon/data-engineering-challenges/tree/main/templates"
-          target="_blank">Templates</a></p>
-
-      <h3 class="section-title">Planeje como estruturar seus dados</h3>
-      <ul>
-        <li>Escalabilidade: A organização inicial adequada garante que a infraestrutura de dados possa lidar com o
-          crescimento sem degradação de desempenho.</li>
-        <li>Qualidade dos Dados: Reduz o risco de inconsistências, duplicações e erros, garantindo a confiabilidade dos
-          dados.</li>
-        <li>Eficiência: Simplifica a recuperação e o processamento de dados, levando a insights e tomada de decisões
-          mais rápidos.</li>
-      </ul>
-
-      <h3 class="section-title display-6 mb-4">Leitura adicional 📚</h3>
-      <div class="row">
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Documentação do Terraform</h5>
-              <p class="card-text">Explore a documentação oficial do Terraform para aprofundar seus conhecimentos.</p>
-              <a href="https://developer.hashicorp.com/terraform/docs" target="_blank" class="btn btn-primary">Acessar
-                documentação</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Configurando GitOps</h5>
-              <p class="card-text">Aprenda a configurar GitOps para gerenciar sua infraestrutura como código de forma
-                eficiente.</p>
-              <a href="https://cloud.google.com/docs/terraform/resource-management/managing-infrastructure-as-code"
-                target="_blank" class="btn btn-primary">Ver guia</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Curso de Ansible</h5>
-              <p class="card-text">Domine o Ansible com este curso abrangente e obtenha certificação.</p>
-              <a href="https://www.ansible.com/products/training-certification" target="_blank"
-                class="btn btn-primary">Ver
-                curso</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">Vídeo introdutório sobre Ansible</h5>
-              <p class="card-text">Assista a um vídeo introdutório para começar sua jornada com o Ansible.</p>
-              <a href="https://www.youtube.com/watch?v=1id6ERvfozo" target="_blank" class="btn btn-primary">Assistir
-                vídeo</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <h2 class="text-center display-4 mb-4">Demonstração do Terraform</h2>
-      <p class="lead text-center">🎯 <strong>Objetivo:</strong> Este guia básico te ajuda a dar seus primeiros passos
-        com Terraform e a criar sua própria infraestrutura em nuvem.</p>
-
-      <div class="text-center mb-4">
-        <img src="https://wagon-public-datasets.s3.amazonaws.com/data-engineering/0502-IAC/terraform.png"
-          alt="Logo do Terraform" class="img-fluid shadow-sm rounded-3" width="400">
-      </div>
-
-      <div class="accordion" id="terraformDemoAccordion">
-        <div class="accordion-item">
-          <h3 class="accordion-header" id="headingOne">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-              aria-expanded="true" aria-controls="collapseOne">
-              Preparação
-            </button>
-          </h3>
-          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-            data-bs-parent="#terraformDemoAccordion">
-            <div class="accordion-body">
-              <ol>
-                <li><strong>Instale o Terraform:</strong> Siga as instruções para o seu sistema operacional em <a
-                    href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli"
-                    target="_blank">https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli</a>
-                </li>
-                <li><strong>Autentique-se:</strong> Certifique-se de estar autenticado na plataforma Google Cloud
-                  Platform (GCP).</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h3 class="accordion-header" id="headingTwo">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              Testando o Projeto
-            </button>
-          </h3>
-          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-            data-bs-parent="#terraformDemoAccordion">
-            <div class="accordion-body">
-              <ol>
-                <li><strong>Navegue até a pasta "production":</strong> Aqui você encontrará os seguintes arquivos
-                  importantes:
-                  <ul>
-                    <li>`variables.tf`: Define as variáveis necessárias para o projeto.</li>
-                    <li>`main.tf`: Define a infraestrutura a ser criada.</li>
-                    <li>`provider.tf`: Define o provedor de nuvem (GCP ou outro) a ser usado.</li>
-                    <li>`terraform.tfvars`: Define os valores para as variáveis definidas em `variables.tf`.</li>
-                  </ul>
-                </li>
-                <li><strong>Atualize os arquivos:</strong> Antes de criar a infraestrutura, atualize os arquivos
-                  `provider.tf` e `terraform.tfvars` com suas informações.</li>
-                <li><strong>Crie a infraestrutura:</strong> Execute os seguintes comandos:
-                  <pre><code>terraform init
-terraform plan</code></pre>
-                  Verifique o plano e, se os recursos estiverem corretos:
-                  <pre><code>terraform apply</code></pre>
-                  🚀 Parabéns! Você acabou de criar recursos em nuvem usando código.
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h3 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              Armazenando o Estado Remotamente
-            </button>
-          </h3>
-          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-            data-bs-parent="#terraformDemoAccordion">
-            <div class="accordion-body">
-              <ol>
-                <li><strong>Renomeie o arquivo:</strong> Renomeie `backend.tf.example` para `backend.tf`.</li>
-                <li><strong>Preencha manualmente:</strong> Preencha o arquivo `backend.tf` com o nome do bucket que você
-                  acabou de criar.
-                  <p class="text-danger">❗️ <strong>Importante:</strong> Não é possível usar variáveis no backend, por
-                    isso o preenchimento manual é necessário.</p>
-                </li>
-              </ol>
-              <p class="text-info">💡 <strong>Dica:</strong> Agora você tem um ambiente funcional e pode adicionar ou
-                remover infraestrutura conforme necessário!</p>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h3 class="accordion-header" id="headingFour">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-              Limpeza
-            </button>
-          </h3>
-          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-            data-bs-parent="#terraformDemoAccordion">
-            <div class="accordion-body">
-              <p>Para remover a infraestrutura criada, basta executar:</p>
-              <pre><code>terraform destroy</code></pre>
-
-              <p>A facilidade de limpeza e a correspondência do estado com o código garantem que você nunca deixe
-                recursos em nuvem indesejados e caros em execução!</p>
-            </div>
-          </div>
-        </div>
-        <div class="accordion-item">
-          <h3 class="accordion-header" id="headingFive">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-              data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-              Indo Além
-            </button>
-          </h3>
-          <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
-            data-bs-parent="#terraformDemoAccordion">
-            <div class="accordion-body">
-              <p>Para automatizar ainda mais o processo, confira este tutorial: <a href="[Link para o tutorial]"
-                  target="_blank">[Link para o tutorial]</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -692,10 +401,11 @@ terraform plan</code></pre>
           </h3>
           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
             data-bs-parent="#autoestudoAccordion">
-            <div class="accordion-body">
-              <p>Assista ao vídeo no link fornecido e siga o passo a passo do tutorial para criar seu ambiente
-                utilizando o Terraform como IaC (Infraestrutura como Código).</p>
+            <div class="accordion-body text-center">
+              <p>Assista ao vídeo no link fornecido e siga o passo a passo do tutorial para criar seu ambiente utilizando o Terraform como IaC (Infraestrutura como Código).</p>
+              <a class="btn btn-secondary" href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-build" target="_blank">Tutorial</a>
             </div>
+            
           </div>
         </div>
         <div class="accordion-item">
