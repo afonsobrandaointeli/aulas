@@ -281,21 +281,24 @@
     <div class="col-md-8">
       <div class="card text-center border-info shadow">
         <div class="card-header bg-info text-white">
-          <i class="fas fa-book me-2"></i> Tutorial de Instalação e Configuração do Minikube no Ubuntu
+          <i class="fas fa-book me-2"></i> Tutorial de Instalação e Configuração do Minikube no Windows
         </div>
         <div class="card-body text-start">
           <h5 class="card-title">Passo 1: Instalar Dependências</h5>
           <p class="card-text">
-            Primeiro, instale as dependências necessárias para rodar o Minikube:
-          <pre><code>sudo apt-get update
-sudo apt-get install -y curl apt-transport-https docker.io</code></pre>
+            Primeiro, instale o Docker para Windows. Baixe e instale o Docker Desktop no site oficial:
+          <ul>
+            <li><a href="https://www.docker.com/products/docker-desktop" target="_blank" class="btn btn-primary my-2"><i
+                  class="fas fa-download me-2"></i>Baixar Docker Desktop</a></li>
+          </ul>
+          Após a instalação, inicie o Docker Desktop e certifique-se de que está rodando.
           </p>
 
           <h5 class="card-title">Passo 2: Instalar o Minikube</h5>
           <p class="card-text">
             Baixe e instale o Minikube:
-          <pre><code>curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-sudo install minikube-linux-amd64 /usr/local/bin/minikube</code></pre>
+          <pre><code>Invoke-WebRequest -Uri "https://storage.googleapis.com/minikube/releases/latest/minikube-installer.exe" -OutFile "minikube-installer.exe"
+Start-Process -FilePath ".\minikube-installer.exe" -Wait</code></pre>
           </p>
 
           <h5 class="card-title">Passo 3: Iniciar o Minikube</h5>
@@ -306,8 +309,10 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube</code></pre>
 
           <h5 class="card-title">Passo 4: Instalar o Kubectl</h5>
           <p class="card-text">
-            Instale o Kubectl, a ferramenta de linha de comando do Kubernetes:
-          <pre><code>sudo apt-get install -y kubectl</code></pre>
+            Baixe e instale o Kubectl:
+          <pre><code>Invoke-WebRequest -Uri "https://dl.k8s.io/release/v1.23.0/bin/windows/amd64/kubectl.exe" -OutFile "kubectl.exe"
+$env:Path += ";$pwd"
+kubectl version --client</code></pre>
           </p>
 
           <h5 class="card-title">Passo 5: Criar Aplicação Flask</h5>
@@ -315,7 +320,7 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube</code></pre>
             Crie uma aplicação Flask simples. Crie um diretório para o projeto e um arquivo <code>app.py</code>:
           <pre><code>mkdir flask-app
 cd flask-app
-nano app.py</code></pre>
+New-Item -Path . -Name "app.py" -ItemType "file"</code></pre>
           Adicione o seguinte conteúdo ao <code>app.py</code>:
           <pre><code>from flask import Flask
 
@@ -328,7 +333,7 @@ def hello():
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)</code></pre>
           Crie um arquivo <code>requirements.txt</code>:
-          <pre><code>nano requirements.txt</code></pre>
+          <pre><code>New-Item -Path . -Name "requirements.txt" -ItemType "file"</code></pre>
           Adicione o seguinte conteúdo:
           <pre><code>Flask==2.1.1</code></pre>
           </p>
@@ -336,7 +341,9 @@ if __name__ == '__main__':
           <h5 class="card-title">Passo 6: Criar Dockerfile</h5>
           <p class="card-text">
             Crie um arquivo <code>Dockerfile</code> com o seguinte conteúdo:
-          <pre><code>FROM python:3.9-slim
+          <pre><code>New-Item -Path . -Name "Dockerfile" -ItemType "file"
+Set-Content -Path "Dockerfile" -Value @"
+FROM python:3.9-slim
 
 WORKDIR /app
 
@@ -345,20 +352,21 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["python", "app.py"]</code></pre>
+CMD ["python", "app.py"]
+"@</code></pre>
           </p>
 
           <h5 class="card-title">Passo 7: Construir e Enviar a Imagem Docker</h5>
           <p class="card-text">
             Construa a imagem Docker:
-          <pre><code>eval $(minikube docker-env)
+          <pre><code>minikube -p minikube docker-env | Invoke-Expression
 docker build -t flask-app:latest .</code></pre>
           </p>
 
           <h5 class="card-title">Passo 8: Criar Manifests do Kubernetes</h5>
           <p class="card-text">
             Crie um arquivo <code>deployment.yaml</code>:
-          <pre><code>nano deployment.yaml</code></pre>
+          <pre><code>New-Item -Path . -Name "deployment.yaml" -ItemType "file"</code></pre>
           Adicione o seguinte conteúdo:
           <pre><code>apiVersion: apps/v1
 kind: Deployment
@@ -381,7 +389,7 @@ spec:
         ports:
         - containerPort: 5000</code></pre>
           Crie um arquivo <code>service.yaml</code>:
-          <pre><code>nano service.yaml</code></pre>
+          <pre><code>New-Item -Path . -Name "service.yaml" -ItemType "file"</code></pre>
           Adicione o seguinte conteúdo:
           <pre><code>apiVersion: v1
 kind: Service
