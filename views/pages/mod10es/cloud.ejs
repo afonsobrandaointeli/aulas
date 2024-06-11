@@ -470,6 +470,98 @@ resource "aws_instance" "example" {
   </div>
 </section>
 
+<section class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-center display-4 mb-4">Documentação com MkDocs e Poetry</h2>
+
+      <div class="card mb-4">
+        <div class="card-body">
+          <p class="card-text">Como alternativa ao README tradicional, você pode criar uma documentação mais estruturada
+            utilizando MkDocs e Poetry. Siga os passos abaixo:</p>
+        </div>
+      </div>
+
+      <div class="accordion" id="mkdocsAccordion">
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="headingFive">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive"
+              aria-expanded="true" aria-controls="collapseFive">
+              Passo a Passo
+            </button>
+          </h3>
+          <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive"
+            data-bs-parent="#mkdocsAccordion">
+            <div class="accordion-body">
+              <ol>
+                <li><strong>Instalação do Poetry:</strong> Instale o Poetry utilizando o comando:
+                  <pre><code>curl -sSL https://install.python-poetry.org | python3 -</code></pre>
+                </li>
+                <li><strong>Configuração do Projeto:</strong> Crie um novo projeto e inicialize o Poetry:
+                  <pre><code>poetry new my_project
+cd my_project
+poetry init</code></pre>
+                </li>
+                <li><strong>Instalação do MkDocs:</strong> Adicione o MkDocs ao projeto:
+                  <pre><code>poetry add mkdocs mkdocs-material</code></pre>
+                </li>
+                <li><strong>Configuração do MkDocs:</strong> Crie o arquivo <code>mkdocs.yml</code> com a seguinte
+                  configuração básica:
+                  <pre><code>site_name: "Documentação do Meu Projeto"
+theme:
+  name: "material"
+nav:
+  - Home: index.md
+  - Sobre: about.md</code></pre>
+                </li>
+                <li><strong>Criação dos Arquivos Markdown:</strong> Crie os arquivos <code>index.md</code> e
+                  <code>about.md</code> na pasta <code>docs</code> com o conteúdo desejado.
+                </li>
+                <li><strong>Execução Local:</strong> Inicie o servidor local para visualizar a documentação:
+                  <pre><code>poetry run mkdocs serve</code></pre>
+                </li>
+                <li><strong>Deploy no GitHub Pages:</strong> Utilize o comando <code>mkdocs gh-deploy</code> para fazer
+                  o deploy da documentação no GitHub Pages:
+                  <pre><code>poetry run mkdocs gh-deploy</code></pre>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="headingSix">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+              data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+              Exemplos de Configuração
+            </button>
+          </h3>
+          <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
+            data-bs-parent="#mkdocsAccordion">
+            <div class="accordion-body">
+              <p>Exemplo de configuração do arquivo <code>mkdocs.yml</code>:</p>
+              <pre><code>site_name: "Documentação do Meu Projeto"
+theme:
+  name: "material"
+nav:
+  - Home: index.md
+  - Sobre: about.md
+markdown_extensions:
+  - toc:
+      permalink: true</code></pre>
+              <p>Exemplo de estrutura de arquivos:</p>
+              <pre><code>my_project/
+├── docs/
+│   ├── index.md
+│   └── about.md
+├── mkdocs.yml
+└── pyproject.toml</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="container py-5 mb-5" id="avaliacao">
   <div class="row justify-content-center">
